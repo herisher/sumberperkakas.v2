@@ -1,0 +1,66 @@
+<?= $this->render('sidemenu/admin.html') ?>
+
+<!--Content-->
+<div id="contents">
+  <div id="contents_in">
+
+    <div id="contents_title">
+      Daftar Admin
+    </div>
+
+    <!--Search form-->
+    <div class="contents_space">
+    	<div class="table_container">
+          <form name="form2" method="post" action="/manager/admin/list">
+            <table id="top">
+              <tr>
+               <td class="first">Username</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('account') ?>
+                </td>
+              </tr>
+          	</table>
+          </div>
+          
+            <table class="bottom" width="100%" border="0" cellpadding="5">
+              <tr>
+                <td align="center">
+                  <input type="submit" class="input_b2" name="search" value="Cari" />&nbsp;
+                  <input type="submit" class="input_b2" name="clear" value="Hapus" />
+                </td>
+              </tr>
+            </table>
+          </form>
+		
+      <!--Pager-->
+      <form name="form1" method="post" action="/manager/admin/list">
+      <?= $this->render('pager.html') ?>
+      </form>
+	
+    	<div class="table_container bottom">
+          <!--List-->
+          <table width="100%" border="0" cellpadding="5">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Login terakhir</th>
+              <th>Edit</th>
+              <th>Hapus</th>
+            </tr>
+    <?php foreach ($this->models as $model) : ?>
+            <tr>
+              <td align="center"><?= $model['id'] ?></td>
+              <td align="left" class="even"><?= $model['account'] ?></td>
+              <td align="left"><?= $model['last_login_date'] ?></td>
+              <td align="center" class="even"><a href="/manager/admin/edit/id/<?= $model['id'] ?>">Edit</a></td>
+              <td align="center"><?php if( $model['type'] != 1 ) : ?><a href="#" onClick="confirmDelete('/manager/admin/delete/id/<?= $model['id'] ?>');return false;">Hapus</a><?php endif; ?></td>
+            </tr>
+    <?php endforeach ; ?>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br class="cl">
+<!--Content end-->

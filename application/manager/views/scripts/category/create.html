@@ -1,0 +1,71 @@
+<?= $this->render('sidemenu/product.html') ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+		if( $('input:radio[name=position]')[0].checked == true || $('input:radio[name=position]')[1].checked == true) {
+			$("#disp_order").attr( 'disabled', true);
+			$("#disp_order").val("");
+		}
+		
+		$('input[name=position]:radio').click(function(){
+			if($(this).val() == 1 || $(this).val() == 2) {
+				$("#disp_order").attr( 'disabled', true);
+				$("#disp_order").val("");
+			} else {
+				$("#disp_order").attr( 'disabled', false);
+			}
+		});
+    });
+</script> 
+
+<!--content-->
+<div id="contents">
+    <div id="contents_in">
+
+        <div id="contents_title">
+            Registrasi Kategori Utama
+        </div>
+        <div class="contents_space">
+            <div class="table_container">
+                <form method="post" action="/manager/category/create">
+                    <table id="top" enctype="multipart/form-data">
+                        <tr>
+                            <td class="first">Nama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'name') ?>
+                                <?= $this->form->getElement('name') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Posisi</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'position') ?>
+                                <?= $this->form->getElement('position') ?><br>
+                                <?php if( $this->category ) : ?><?= $this->form->getElement('disp_order') ?> <?php endif;?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?></div>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" value="Simpan"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br class="cl">
+<!--content end-->

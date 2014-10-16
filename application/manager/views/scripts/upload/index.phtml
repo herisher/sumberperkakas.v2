@@ -1,0 +1,37 @@
+<div id="ars_middle_subpage">
+	<h2>Upload</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris iaculis nulla vitae ante congue iaculis. Nunc vitae sapien sed neque porttitor egestas sit amet ut ligula. Praesent placerat dui ut nibh eleifend lobortis. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+</div>
+<div id="ars_main">
+
+	<div class="col_w900 col_w900_last">
+		<div class="col_w180">
+			
+			<!--SubNavigation-->
+			<?php echo $this->render('subnav/subnav-profil.phtml');?>
+			<!--End SubNavigation-->
+			<div class="cleaner"></div>
+
+		</div>
+			<!--
+			<form enctype="multipart/form-data" action="/upload/upload" method="POST">
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+					Choose a file to upload: <input name="uploadedfile" type="file" />
+				<br />
+				<input type="submit" value="Upload File" />
+			</form>		
+			-->
+			<?php
+			$this->form->setAction('/upload/upl');
+							echo $this->form;
+			?>
+		<div>
+
+			<div class="cleaner"></div>
+		</div>
+		
+		<div class="cleaner"></div>
+	</div>
+	
+	<div class="cleaner"></div>
+</div> <!-- end of main -->

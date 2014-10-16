@@ -1,0 +1,39 @@
+<!--content-->
+<div id="contents_index">
+  <div id="contents_in">
+
+    <!--<div id="contents_title">
+      <?= $this->subtitle ?>
+    </div>-->
+
+    <div id="login">
+
+<?php if ($this->error_str) : ?>
+<font color="#ff0000"><?= $this->error_str ?></font>
+<?php endif ; ?>
+
+    <form id="form1" name="form1" method="post" action="/manager/login">
+      <table>
+        <tr>
+          <td>Username</td>
+        </tr>
+        <tr>
+          <td><?= $this->form->getElement('login_id') ?></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+        </tr>
+        <tr>
+          <td><?= $this->form->getElement('login_pw') ?></td>
+        </tr>
+        <tr>
+          <td align="center"><input name="submit" type="submit" class="btn" value="Log In" /></td>
+        </tr>
+      </table>
+      <?= $this->form->getElement('return_path') ?>
+    </form>
+
+  </div>
+</div>
+<br class="cl">
+<!--content end-->

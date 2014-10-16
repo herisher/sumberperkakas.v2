@@ -1,0 +1,18 @@
+RewriteEngine On
+
+RewriteRule ^favicon.ico$ - [F]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+#php_flag display_errors On
+#php_value session.name sid
+
+# basic authentication
+#AuthType Basic
+#AuthName "Please input ID and password."
+#AuthUserFile /home/sites/titian/.htpasswd
+#Require valid-user

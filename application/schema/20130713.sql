@@ -1,0 +1,1 @@
+alter table dtb_product add column `viewer` int(11) default 0 after `promo_period_end`;

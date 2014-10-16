@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Sumber Perkakas</title>
+<link rel="shortcut icon" href="/img/common/favicon.png">
+<link rel="icon" href="/img/common/favicon.png">
+<link rel="stylesheet" href="/css/main.css" type="text/css">
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/fancyzoom.min.js"></script>
+<script type="text/javascript" src="/js/item.js"></script>
+<script type="text/javascript" src="/js/jquery.accordion.source.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.accordion').accordion();
+});
+</script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/IE9.js"></script>
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="/js/ie7-squish.js"></script> 
+<![endif]-->
+</head>
+<body>
+
+<?= $this->render("header.html"); ?>
+
+<section class="wrapper column1">
+	<section class="contents">
+		<div class="crumbblock">
+			<a href="/">UTAMA</a> &rArr; <a href="/news/list">Daftar Berita</a> &rArr; Detail Berita
+		</div>
+		<div class="newsdetail">
+			<div class="newstitle" style="background-image: url('/img/main/main_newstitle2_back.gif');">
+				<h2></h2>
+			</div>
+			<article class="newsarticle">
+			<img src="<?= $this->news['image_url'] ?>" style="position:center"/>
+			<br/><br/>
+			<h2><?= $this->news['title'] ?></h2>
+			<?= nl2br($this->news['content']) ?>
+			</article>
+		</div>
+		<div class="interface">
+			<ul class="pager">
+				<li class="prevpagebtn"><a href="javascript:history.back();"><span class="realtext">Kembali</span></a></li>
+			</ul>
+		</div>
+	</section>
+	<div class="footbanner">
+	</div>
+</section>
+
+<?= $this->render("footer.html"); ?>
+
+</body>
+</html>

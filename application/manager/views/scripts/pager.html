@@ -1,0 +1,35 @@
+<script>
+<!--
+function pager($page) {
+  document.getElementsByName('page')[0].value  = $page;
+  document.getElementsByName('limit')[0].value = document.getElementsByName('item_count_per_page')[0].value;
+  document.form1.submit();
+}
+//-->
+</script>
+<center>
+<input type="hidden" name="page" value="">
+<input type="hidden" name="limit" value="">
+<div>
+<?php if (isset($this->pages->previous)) : ?>
+<input type="button" class="input_b1" value="&lt;&lt; Sebelumnya" onClick="pager(<?= $this->pages->previous ?>);">
+<?php else : ?>
+&lt;&lt; Sebelumnya
+<?php endif; ?>
+<?php if (isset($this->pages->next)) : ?>
+<input type="button" class="input_b1" value="Berikutnya &gt;&gt;" onClick="pager(<?= $this->pages->next ?>);">
+<?php else : ?>
+Berikutnya &gt;&gt;
+<?php endif; ?>
+</div>
+<div>
+【Total : <?= number_format($this->pages->totalItemCount); ?> 】
+<?= number_format($this->pages->firstItemNumber); ?> dari <?= number_format($this->pages->lastItemNumber); ?> item
+<select name="item_count_per_page" onChange="pager(1);">
+<option value="10"  <?php if ($this->pages->itemCountPerPage == 10)  { echo "selected=\"selected\""; } ?>>10item</option>
+<option value="20"  <?php if ($this->pages->itemCountPerPage == 20)  { echo "selected=\"selected\""; } ?>>20item</option>
+<option value="50"  <?php if ($this->pages->itemCountPerPage == 50)  { echo "selected=\"selected\""; } ?>>50item</option>
+<option value="100" <?php if ($this->pages->itemCountPerPage == 100) { echo "selected=\"selected\""; } ?>>100item</option>
+</select>
+</div>
+</center>

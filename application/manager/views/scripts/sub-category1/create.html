@@ -1,0 +1,143 @@
+<?= $this->render('sidemenu/product.html') ?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		if( $('#category_id option:selected').text() == '▼Pilih' ) {
+			$("#sub_category_id").attr( 'disabled', true);
+			$(".position").attr( 'disabled', true);
+			$("input:radio[name='position'][value='1']").attr( 'checked', 'checked');
+			$("#disp_order").attr( 'disabled', true);
+		}
+		
+		if( $('#sub_category_id option:selected').text() == '▼Pilih' ) {
+			$(".position").attr( 'disabled', true);
+			$("input:radio[name='position'][value='1']").attr( 'checked', 'checked');
+			$("#disp_order").attr( 'disabled', true);
+		} else {
+			if($("input:radio[name='position']:checked").val() == 1 || $("input:radio[name='position']:checked").val() == 2) {
+				$("#disp_order").attr( 'disabled', true);
+				$("#disp_order").val("");
+			} else if( $("input:radio[name='position']:checked").val() == 3 ) {
+				$("#disp_order").attr( 'disabled', false);
+			} else {
+				$("#disp_order").attr( 'disabled', true);
+				$("#disp_order").val("");
+			}
+		}		
+		
+		$('#category_id').change(
+			function() {
+				var selectedText = $('#category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$("#sub_category_id").attr( 'disabled', true);
+					$(".position").attr( 'disabled', true);
+					$("input:radio[name='position'][value='1']").attr( 'checked', 'checked');
+					$("#disp_order").attr( 'disabled', true);
+				} else {
+					$("#sub_category_id").attr( 'disabled', false);
+					$(".position").attr( 'disabled', true);
+					$("#disp_order").attr( 'disabled', true);
+					$("#disp_order").val("");
+				}
+				
+				$('#sub_category_id').load('/manager/sub-category/get-list/q/' , { q: $(this).val() });
+			}
+		);
+		
+		$('#sub_category_id').change(
+			function() {
+				var selectedText = $('#sub_category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$(".position").attr( 'disabled', true);
+					$("input:radio[name='position'][value='1']").attr( 'checked', 'checked');
+					$("#disp_order").attr( 'disabled', true);
+					$("#disp_order").val("");
+				} else {
+					$(".position").attr( 'disabled', false);
+				}
+				
+				$('#disp_order').load('/manager/sub-category1/get-list/q/' , { q: $(this).val() });
+			}
+		);
+		
+		$('input[name=position]:radio').click(function(){
+			if( $(this).val() == 1 || $(this).val() == 2) {
+				$("#disp_order").attr( 'disabled', true);
+				$("#disp_order").val("");
+			} else if( $(this).val() == 3 ) {
+				$("#disp_order").attr( 'disabled', false);
+				$("#disp_order").val("");
+			} else {
+				$("#disp_order").attr( 'disabled', true);
+			}
+		});
+    });
+</script> 
+
+<!--content-->
+<div id="contents">
+    <div id="contents_in">
+
+        <div id="contents_title">
+            Registrasi Sub Kategori 
+        </div>
+        <div class="contents_space">
+            <div class="table_container">
+                <form method="post" action="/manager/sub-category1/create">
+                    <table id="top" enctype="multipart/form-data">
+                        <tr>
+                            <td class="first">Nama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'name') ?>
+                                <?= $this->form->getElement('name') ?>
+                            </td>
+                        </tr>
+						<tbody id="data">
+                        <tr>
+                            <td class="first">Kategori Utama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'category_id') ?>
+                                <?= $this->form->getElement('category_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Kategori</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'sub_category_id') ?>
+                                <?= $this->form->getElement('sub_category_id') ?>
+                            </td>
+                        </tr>
+						</tbody>
+                        <tr>
+                            <td class="first">Posisi</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'position') ?>
+                                <?= $this->form->getElement('position') ?><br>
+                                <?= $this->form->getElement('disp_order') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?></div>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" value="Simpan"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br class="cl">
+<!--コンテンツ終-->

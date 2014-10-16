@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Sumber Perkakas</title>
+<link rel="shortcut icon" href="/img/common/favicon.png">
+<link rel="icon" href="/img/common/favicon.png">
+<link rel="stylesheet" href="/css/main.css" type="text/css">
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/fancyzoom.min.js"></script>
+<script type="text/javascript" src="/js/item.js"></script>
+<script type="text/javascript" src="/js/jquery.accordion.source.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.accordion').accordion();
+});
+</script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/IE9.js"></script>
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="/js/ie7-squish.js"></script> 
+<![endif]-->
+</head>
+<body>
+
+<?= $this->render("header.html"); ?>
+
+<section class="wrapper column1">
+	<section class="contents">
+		<div class="crumbblock">
+			<a href="/">UTAMA</a> &rArr; Daftar Berita
+		</div>
+		<div class="newsdetail">
+			<div class="newstitle" style="background-image: url('/img/main/main_newstitle2_back.gif');">
+				<h2></h2>
+			</div>
+			<article class="newssummary">
+				<ul class="newslist">
+				<?php foreach($this->paginator as $news) : ?>
+					<li><span><?= date('d.m.Y', strtotime($news['disp_date']))?></span>
+						<span class="newslink"><a href="/news/detail/id/<?=$news['id']?>" style="font-size:130%"><?=h($news['title'])?></a><br>
+						<?= substr($news['content'],0,50) ?><?php if(strlen($news['content'])>50) echo '...';?>
+						</span>
+					</li>
+				<?php endforeach; ?>
+				</ul>
+			</article>
+		</div>
+		<? if($this->pages->pageCount > 1): ?>
+		<div class="interface">
+			<div class="pager-left">
+				<ul class="pager">
+				<?php foreach ($this->pages->pagesInRange as $page): ?>
+				<?php if($page == $this->pages->current): ?>
+					<li class="nowpage"><span><?= $page ?></span></li>
+				<?php else: ?>
+					<li class="linkpage"><span><a href="/news/list<?=$this->render_url?>?page=<?= $page ?>"><?= $page ?></a></span></li>
+				<?php endif; ?>
+				<?php endforeach; ?>
+				</ul>
+			</div>
+			<div class="pager-right">
+				<ul class="pager">
+				<? if(isset($this->pages->previous)): ?>
+					<li class="prevpagebtn"><a href="/news/list<?=$this->render_url?>?page=<?= $this->pages->previous ?>"><span class="realtext">Sebelum</span></a></li>
+				<? else : ?>
+					<li class="prevpagebtn disabled"><a href="#"><span class="realtext">Sebelum</span></a></li>
+				<? endif; ?>
+				<? if(isset($this->pages->next)): ?>
+					<li class="nextpagebtn"><a href="/news/list<?=$this->render_url?>?page=<?= $this->pages->next ?>"><span class="realtext">Sesudah</span></a></li>
+				<? else : ?>
+					<li class="nextpagebtn disabled"><a href="#"><span class="realtext">Sesudah</span></a></li>
+				<? endif; ?>
+				</ul>
+			</div>
+		</div>
+		<? endif; ?>
+	</section>
+	<div class="footbanner">
+	</div>
+</section>
+
+<?= $this->render("footer.html"); ?>
+
+</body>
+</html>

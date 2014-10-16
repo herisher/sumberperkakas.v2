@@ -1,0 +1,152 @@
+<?= $this->render('sidemenu/product.html') ?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#category_id').change(
+			function() {
+				var selectedText = $('#category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$('#sub_category_id').load('/manager/sub-category/get-list');
+					$('#sub_category1_id').load('/manager/sub-category1/get-list');
+					$('#sub_category_id').val('');
+					$('#sub_category1_id').val('');
+				} else {
+					$('#sub_category_id').load('/manager/sub-category/get-list/q/' , { q: $(this).val() });
+					$('#sub_category1_id').load('/manager/sub-category1/get-list-by-category/q/' , { q: $(this).val() });
+				}				
+			}
+		);
+		
+		$('#sub_category_id').change(
+			function() {
+				var selectedText = $('#sub_category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$('#sub_category1_id').load('/manager/sub-category1/get-list');
+					$('#sub_category1_id').val('');
+				} else {
+					$.post('/manager/sub-category/get-detail/q/', { q: $(this).val() }, function(result) {
+						$('#category_id').val(result);
+					});
+					$('#sub_category1_id').load('/manager/sub-category1/get-list/q/' , { q: $(this).val() });
+				}
+			}
+		);
+		
+		$('#sub_category1_id').change(
+			function() {
+				var selectedText = $('#sub_category1_id option:selected').text();
+				if(selectedText != '▼Pilih') {
+					$.post('/manager/sub-category1/get-detail/q/', { q: $(this).val() }, function(result) {
+						$('#category_id').val(result.cid);
+						$('#sub_category_id').val(result.scid);
+					}, "json");
+				}
+			}
+		);
+	});
+</script> 
+
+<!--Content-->
+<div id="contents">
+  <div id="contents_in">
+
+    <div id="contents_title">
+      Daftar Sub Kategori II
+    </div>
+
+    <!--Search form-->
+    <div class="contents_space">
+    	<div class="table_container">
+          <form name="form2" method="post" action="/manager/sub-category2/list">
+            <table id="top">
+              <tr>
+               <td class="first">Nama</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('name') ?>
+                </td>
+              </tr>
+			  <tr height="15px">
+               <td class="first"></td>
+                <td width="80%" class="color_gray" colspan="3">
+                </td>
+              </tr>
+			  <tr>
+               <td class="first">Kategori Utama</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('category_id') ?>
+                </td>
+              </tr>
+			  <tr>
+               <td class="first">Kategori</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('sub_category_id') ?>
+                </td>
+              </tr>
+			  <tr>
+               <td class="first">Sub Kategori</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('sub_category1_id') ?>
+                </td>
+              </tr>
+			  <tr>
+               <td class="first">Ditampilkan</td>
+                <td width="80%" class="color_gray" colspan="3">
+                  <?= $this->form->getElement('disp_flag') ?>
+                </td>
+              </tr>
+          	</table>
+          </div>
+          
+            <table class="bottom" width="100%" border="0" cellpadding="5">
+              <tr>
+                <td align="center">
+                  <input type="submit" class="input_b2" name="search" value="Cari" />&nbsp;
+                  <input type="submit" class="input_b2" name="clear" value="Hapus" />
+                </td>
+              </tr>
+            </table>
+          </form>
+		
+      <!--Pager-->
+      <form name="form1" method="post" action="/manager/sub-category2/list">
+      <?= $this->render('pager.html') ?>
+      </form>
+	
+    	<div class="table_container bottom">
+          <!--List-->
+          <table width="100%" border="0" cellpadding="5">
+            <tr>
+              <th>ID</th>
+              <th>Nama</th>
+              <th>Kategori Utama</th>
+              <th>Kategori</th>
+              <th>Sub Kategori</th>
+              <th>Ditampilkan</th>
+              <th>Naik</th>
+              <th>Turun</th>
+              <th>Edit</th>
+              <th>Hapus</th>
+            </tr>
+    <?php $i = 0; foreach ($this->models as $model) : ?>
+            <tr>
+              <td align="center"><?= $model['id'] ?></td>
+              <td align="left" class="even"><?= $model['name'] ?></td>
+              <td align="left"><?= $model['category']['name'] ?></td>
+              <td align="left"><?= $model['sub_category']['name'] ?></td>
+              <td align="left"><?= $model['sub_category1']['name'] ?></td>
+              <td align="left" class="even"><?= $model['disp_flag'] ?></td>
+              <td align="center"><?php if($i != 0) : ?><a href="/manager/sub-category2/doUp/sc1id/<?= $model['sub_category1_id'] ?>/id/<?= $model['id'] ?>"><?= $model['up'] ?></a><?php endif; ?></td>
+              <td align="center" class="even"><?php if($i != count($this->models)-1) : ?><a href="/manager/sub-category2/doDown/sc1id/<?= $model['sub_category1_id'] ?>/id/<?= $model['id'] ?>"><?= $model['down'] ?></a><?php endif; ?></td>
+              <td align="center"><a href="/manager/sub-category2/edit/id/<?= $model['id'] ?>">Edit</a></td>
+              <td align="center" class="even"><a href="#" onClick="confirmDelete('/manager/sub-category2/delete/id/<?= $model['id'] ?>');return false;">Hapus</a></td>
+            </tr>
+    <?php $i++; endforeach ; ?>
+	<?php if($this->error) : ?><tr><td colspan="8" align="center"><?= $this->error ?></td></tr><?php endif; ?>
+          </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br class="cl">
+<!--Content end-->

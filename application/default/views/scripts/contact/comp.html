@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Sumber Perkakas</title>
+<link rel="shortcut icon" href="/img/common/favicon.png">
+<link rel="icon" href="/img/common/favicon.png">
+<link rel="stylesheet" href="/css/main.css" type="text/css">
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.accordion.source.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('.accordion').accordion();
+});
+</script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/IE9.js"></script>
+<![endif]-->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="/js/ie7-squish.js"></script> 
+<![endif]-->
+</head>
+<body>
+
+<?= $this->render("header.html"); ?>
+
+<section class="wrapper column2">
+	
+<?= $this->render("leftmenu.html"); ?>
+
+	<section class="contents">
+		<div class="crumbblock">
+			<a href="/">UTAMA</a> &rArr; Kontak
+		</div>
+		<div class="infoblock">
+			<div class="infotitle" style="background-image: url('/img/main/main_contacttitle_back.gif');">
+				<h2></h2>
+			</div>
+			<div class="infoinner" style="border-top: none;">
+			Terima kasih telah menghubungi kami, Email Anda telah kami terima. <br>
+			Anda akan mendapatkan respon atas pertanyaan Anda.<br>
+			</div>
+		</div>
+	</section>
+	<div class="footbanner">
+	</div>
+</section>
+
+<?= $this->render("footer.html"); ?>
+
+</body>
+</html>

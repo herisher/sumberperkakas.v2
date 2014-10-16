@@ -1,0 +1,88 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+		$("#disp_date").datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
+    });
+</script> 
+
+<?= $this->render('sidemenu/service.html') ?>
+
+<!--content-->
+<div id="contents">
+    <div id="contents_in">
+
+        <div id="contents_title">
+            Registrasi Berita 
+        </div>
+        <div class="contents_space">
+            <div class="table_container">
+                <form method="post" action="/manager/news/create" enctype="multipart/form-data">
+                    <table id="top">
+                        <tr>
+                            <td class="first">Judul</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'title') ?>
+                                <?= $this->form->getElement('title') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Isi</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'content') ?>
+                                <?= $this->form->getElement('content') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">URL</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'url') ?>
+                                <?= $this->form->getElement('url') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Gambar</td>
+                            <td width="80%" class="color_gray"> 
+							<?= my_mb_error($this->error_str, 'image_url') ?>
+							<?= $this->form->getElement('image_url1') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Tanggal ditampilkan</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'disp_date') ?>
+                                <?= $this->form->getElement('disp_date') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">No. Urut</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'sort_order') ?>
+                                <?= $this->form->getElement('sort_order') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" value="Simpan"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br class="cl">
+<!--content end-->

@@ -1,0 +1,257 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+		$('#category_id').change(
+			function() {
+				var selectedText = $('#category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$('#sub_category_id').load('/manager/sub-category/get-list');
+					$('#sub_category1_id').load('/manager/sub-category1/get-list');
+					$('#sub_category2_id').load('/manager/sub-category2/get-list');
+					$('#sub_category_id').val('');
+					$('#sub_category1_id').val('');
+					$('#sub_category2_id').val('');
+				} else {
+					$('#sub_category_id').load('/manager/sub-category/get-list/q/' , { q: $(this).val() });
+					$('#sub_category1_id').load('/manager/sub-category1/get-list-by-category/q/' , { q: $(this).val() });
+					$('#sub_category2_id').load('/manager/sub-category2/get-list-by-category/q/' , { q: $(this).val() });
+				}				
+			}
+		);
+		
+		$('#sub_category_id').change(
+			function() {
+				var selectedText = $('#sub_category_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$('#sub_category1_id').load('/manager/sub-category1/get-list');
+					$('#sub_category1_id').val('');
+					$('#sub_category2_id').load('/manager/sub-category2/get-list');
+					$('#sub_category2_id').val('');
+				} else {
+					$.post('/manager/sub-category/get-detail/q/', { q: $(this).val() }, function(result) {
+						$('#category_id').val(result);
+					});
+					$('#sub_category1_id').load('/manager/sub-category1/get-list/q/' , { q: $(this).val() });
+					$('#sub_category2_id').load('/manager/sub-category2/get-list-by-subcategory/q/' , { q: $(this).val() });
+				}
+			}
+		);
+		
+		$('#sub_category1_id').change(
+			function() {
+				var selectedText = $('#sub_category1_id option:selected').text();
+				if(selectedText == '▼Pilih') {
+					$('#sub_category2_id').load('/manager/sub-category2/get-list');
+					$('#sub_category2_id').val('');				
+				} else {
+					$.post('/manager/sub-category1/get-detail/q/', { q: $(this).val() }, function(result) {
+						$('#category_id').val(result.cid);
+						$('#sub_category_id').val(result.scid);
+					}, "json");
+				}
+			}
+		);
+		
+		$('#sub_category2_id').change(
+			function() {
+				var selectedText = $('#sub_category2_id option:selected').text();
+				if(selectedText != '▼Pilih') {
+					$.post('/manager/sub-category2/get-detail/q/', { q: $(this).val() }, function(result) {
+						$('#category_id').val(result.cid);
+						$('#sub_category_id').val(result.scid);
+						$('#sub_category1_id').val(result.sc1id);
+					}, "json");
+				}
+			}
+		);
+		
+		if( $("#call_us").is(':checked') ) {
+			$("#price").attr( 'disabled', true);
+			$("#price").val("");
+		}
+	
+		$("#promo_period_start").datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
+		$("#promo_period_end").datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
+    });
+
+	function check() {
+		if( document.getElementById("call_us").checked == true ) {
+			document.getElementById("price").value = "";
+			document.getElementById("price").disabled = true;
+		} else {
+			document.getElementById("price").disabled = false;
+		}
+	}
+</script> 
+
+<?= $this->render('sidemenu/product.html') ?>
+
+<!--content-->
+<div id="contents">
+    <div id="contents_in">
+
+        <div id="contents_title">
+            Registrasi Produk 
+        </div>
+        <div class="contents_space">
+            <div class="table_container">
+                <form method="post" action="/manager/product/create" enctype="multipart/form-data">
+                    <table id="top">
+                        <tr>
+                            <td class="first">Kode Product</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'item_number') ?>
+                                <?= $this->form->getElement('item_number') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Nama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'name') ?>
+                                <?= $this->form->getElement('name') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Harga</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'price') ?>
+                                <?= $this->form->getElement('call_us') ?>Hubungi Kami<br>
+                                <?= $this->form->getElement('price') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Harga Promo</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'promo_price') ?>
+                                <?= $this->form->getElement('promo_price') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">password</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'password') ?>
+                                <?= $this->form->getElement('password') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Periode Promo</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'promo_period') ?>
+                                <?= $this->form->getElement('promo_period_start') ?> - <?= $this->form->getElement('promo_period_end') ?>※1970-01-01 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Merk</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'brand_id') ?>
+                                <?= $this->form->getElement('brand_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Tipe</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'type') ?>
+                                <?= $this->form->getElement('type') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Kategori Utama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'category_id') ?>
+                                <?= $this->form->getElement('category_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Kategori</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'sub_category_id') ?>
+                                <?= $this->form->getElement('sub_category_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Sub Kategori</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'sub_category1_id') ?>
+                                <?= $this->form->getElement('sub_category1_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Sub Kategori II</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'sub_category2_id') ?>
+                                <?= $this->form->getElement('sub_category2_id') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Gambar</td>
+                            <td width="80%" class="color_gray"> 
+							<?php if( $this->error_str['image_url'] ) : ?><br>
+							<?= my_mb_error($this->error_str, 'image_url') ?>
+							<?php endif; ?>
+							<div class="contents_space2">
+							<table width="100%" border="0" cellpadding="5">
+							<tr>
+								<td class="color_gray">
+								<div class="item_img">
+									<?= $this->form->getElement('image_url1') ?>
+									<!--input name="image_url1" type="file" size="20" /-->
+									<br/><span class="red">※</span> Harus diisi.<br/>Jika hanya ada satu gambar,<br/>Silakan gunakan field ini.
+								</div>
+								<div class="item_img">
+									<?= $this->form->getElement('image_url2') ?>
+									<!--input name="image_url2" type="file" size="20" /-->
+								</div>
+								<div class="item_img">
+									<?= $this->form->getElement('image_url3') ?>
+									<!--input name="image_url3" type="file" size="20" /-->
+								</div>
+							</tr>
+							</table>
+							</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Status</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'status') ?>
+                                <?= $this->form->getElement('status') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?></div>
+                            </td>
+                        </tr>
+                        <tr class="general_info">
+                          <td colspan="2">Spesifikasi Produk</td>
+                        </tr>
+                        <tr>
+                            <td class="first">Deskripsi</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'description') ?>
+                                <?= $this->form->getElement('description') ?>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" value="Simpan"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br class="cl">
+<!--content end-->

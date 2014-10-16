@@ -1,0 +1,1 @@
+ALTER TABLE 'dtb_product' ADD COLUMN `call_us` tinyint(4) default 0 after 'description';

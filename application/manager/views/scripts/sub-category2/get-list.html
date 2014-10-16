@@ -1,0 +1,12 @@
+<?php foreach($this->models as $model){ 
+	if($model['name'] == "emptyIdValue"){ 
+?>
+	  emptyIdValue
+<?php 
+	} else {
+?>
+	  <option value="<?=$model['id']?>" label="<?=$model['name']?>"><?=$model['name']?></option>
+<?
+	}
+} 
+?>

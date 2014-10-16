@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="urn:schemas-cybersource-com:transaction-data-1.75">
+<SOAP-ENV:Header xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<wsse:Security SOAP-ENV:mustUnderstand="1">
+<wsse:UsernameToken>
+<wsse:Username>%USER_NAME%</wsse:Username>
+<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">%PASSWORD%</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</SOAP-ENV:Header>
+<SOAP-ENV:Body>
+<ns1:requestMessage>
+<ns1:merchantID>%MERCHANT_ID%</ns1:merchantID>
+<ns1:merchantReferenceCode>%ORDER_CODE%</ns1:merchantReferenceCode>
+<ns1:clientLibrary>PHP</ns1:clientLibrary>
+<ns1:billTo>
+<ns1:firstName>%NAME2%</ns1:firstName>
+<ns1:lastName>%NAME1%</ns1:lastName>
+<ns1:street1>芝大門1-14-3</ns1:street1>
+<ns1:city>港区</ns1:city>
+<ns1:state>東京都</ns1:state>
+<ns1:postalCode>1050012</ns1:postalCode>
+<ns1:country>JP</ns1:country>
+<ns1:email>%EMAIL%</ns1:email>
+</ns1:billTo>
+<ns1:item id="0">
+<ns1:unitPrice>%PRICE%</ns1:unitPrice>
+</ns1:item>
+<ns1:purchaseTotals>
+<ns1:currency>JPY</ns1:currency>
+</ns1:purchaseTotals>
+<ns1:card>
+<ns1:accountNumber>%CARD_NUMBER%</ns1:accountNumber>
+<ns1:expirationMonth>%EXPIRE_MONTH%</ns1:expirationMonth>
+<ns1:expirationYear>%EXPIRE_YEAR%</ns1:expirationYear>
+</ns1:card>
+<ns1:ccAuthService run="true"/>
+</ns1:requestMessage>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

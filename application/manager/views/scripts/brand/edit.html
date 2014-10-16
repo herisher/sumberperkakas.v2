@@ -1,0 +1,64 @@
+<?= $this->render('sidemenu/product.html') ?>
+
+<!--content-->
+<div id="contents">
+  <div id="contents_in">
+
+    <div id="contents_title">
+		Edit Brand 
+    </div>
+    <div class="contents_space">
+    	<div class="table_container">
+                <form method="post" action="/manager/brand/edit/id/<?= $this->model['id'] ?>" enctype="multipart/form-data">
+                    <table id="top">
+                        <tr>
+                            <td class="first">Nama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'name') ?>
+                                <?= $this->form->getElement('name') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Url</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'url') ?>
+                                <?= $this->form->getElement('url') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Gambar</td>
+                            <td width="80%" class="color_gray"> 
+							<?= my_mb_error($this->error_str, 'image_url') ?>
+								<? if($this->model['image_url']) : ?>
+							　<img src="<?=$this->model['image_url']?>" alt="produk" width="100"><br />
+							　<input name="checkbox1" value="1" type="checkbox" style="width:10px;">
+							　Hapus<br />
+								<? endif; ?>
+								<?= $this->form->getElement('image_url1') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" id = "update" value="Edit"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+    </div>
+
+  </div>
+</div>
+<br class="cl">
+<!--content end-->

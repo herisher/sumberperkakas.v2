@@ -1,0 +1,20 @@
+#gear-right2 {
+	background: #333333;
+	display: block;
+	height: 50px;
+	left: 0px;
+	position: fixed;
+	top: 150px;
+	width: 50px;
+	z-index: 9995;
+	cursor: pointer;
+}
+#gear-right2 i {
+	display: block;
+	padding-top: 10px;
+	text-align: center;
+}
+#tool_customization #quit{
+	margin: 0;
+	color:#fff;
+}

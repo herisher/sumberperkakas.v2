@@ -1,0 +1,1 @@
+alter table dtb_news add column thumb_url varchar(200) default null after image_url;

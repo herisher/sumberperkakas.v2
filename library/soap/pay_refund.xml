@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="urn:schemas-cybersource-com:transaction-data-1.75">
+<SOAP-ENV:Header xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<wsse:Security SOAP-ENV:mustUnderstand="1">
+<wsse:UsernameToken>
+<wsse:Username>%USER_NAME%</wsse:Username>
+<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">%PASSWORD%</wsse:Password>
+</wsse:UsernameToken>
+</wsse:Security>
+</SOAP-ENV:Header>
+<SOAP-ENV:Body>
+<ns1:requestMessage>
+<ns1:merchantID>%MERCHANT_ID%</ns1:merchantID>
+<ns1:merchantReferenceCode>%ORDER_CODE%</ns1:merchantReferenceCode>
+<ns1:clientLibrary>PHP</ns1:clientLibrary>
+<ns1:item id="0">
+<ns1:unitPrice>%PRICE%</ns1:unitPrice>
+</ns1:item>
+<ns1:purchaseTotals>
+<ns1:currency>JPY</ns1:currency>
+</ns1:purchaseTotals>
+<ns1:orderRequestToken>%REQUEST_TOKEN%</ns1:orderRequestToken>
+<ns1:ccCreditService run="true">
+<ns1:captureRequestID>%REQUEST_ID%</ns1:captureRequestID>
+</ns1:ccCreditService>
+</ns1:requestMessage>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
