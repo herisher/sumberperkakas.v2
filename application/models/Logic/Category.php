@@ -14,7 +14,17 @@ class Logic_Category extends Logic_Base {
      *
      */
     public function getAll() {
-        return $this->db()->fetchAll("SELECT * FROM dtb_category ORDER BY `disp_order`");
+        $models = $this->db()->fetchAll("SELECT * FROM dtb_category ORDER BY `disp_order`");
+        
+        $datas = array();
+        foreach( $models as $model ) {
+            $datas[$model['id']] = $model;
+            $sub_category = $this->model('Logic_SubCategory')->findByCategoryId($model['id'], 1);
+            if( count($sub_category) ) {
+                $datas[$model['id']]['sub_category'] = $sub_category;
+            }
+        }
+        return $datas;
     }
 
     /**

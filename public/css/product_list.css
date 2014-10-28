@@ -332,6 +332,9 @@ Product list(Index page) Styles
       clear: none; }
     #index ul.product_list.tab-pane > li.first-item-of-mobile-line {
       clear: left; } }
+.product_img_link{
+    text-align: center;
+}
 
 /***** IE code *****/
 .ie8 .quick-view {

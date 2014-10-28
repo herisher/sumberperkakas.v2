@@ -2,91 +2,91 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-		$('#category_id').change(
-			function() {
-				var selectedText = $('#category_id option:selected').text();
-				if(selectedText == '▼Pilih') {
-					$('#sub_category_id').load('/manager/sub-category/get-list');
-					$('#sub_category1_id').load('/manager/sub-category1/get-list');
-					$('#sub_category2_id').load('/manager/sub-category2/get-list');
-					$('#sub_category_id').val('');
-					$('#sub_category1_id').val('');
-					$('#sub_category2_id').val('');
-				} else {
-					$('#sub_category_id').load('/manager/sub-category/get-list/q/' , { q: $(this).val() });
-					$('#sub_category1_id').load('/manager/sub-category1/get-list-by-category/q/' , { q: $(this).val() });
-					$('#sub_category2_id').load('/manager/sub-category2/get-list-by-category/q/' , { q: $(this).val() });
-				}				
-			}
-		);
-		
-		$('#sub_category_id').change(
-			function() {
-				var selectedText = $('#sub_category_id option:selected').text();
-				if(selectedText == '▼Pilih') {
-					$('#sub_category1_id').load('/manager/sub-category1/get-list');
-					$('#sub_category1_id').val('');
-					$('#sub_category2_id').load('/manager/sub-category2/get-list');
-					$('#sub_category2_id').val('');
-				} else {
-					$.post('/manager/sub-category/get-detail/q/', { q: $(this).val() }, function(result) {
-						$('#category_id').val(result);
-					});
-					$('#sub_category1_id').load('/manager/sub-category1/get-list/q/' , { q: $(this).val() });
-					$('#sub_category2_id').load('/manager/sub-category2/get-list-by-subcategory/q/' , { q: $(this).val() });
-				}
-			}
-		);
-		
-		$('#sub_category1_id').change(
-			function() {
-				var selectedText = $('#sub_category1_id option:selected').text();
-				if(selectedText == '▼Pilih') {
-					$('#sub_category2_id').load('/manager/sub-category2/get-list');
-					$('#sub_category2_id').val('');				
-				} else {
-					$.post('/manager/sub-category1/get-detail/q/', { q: $(this).val() }, function(result) {
-						$('#category_id').val(result.cid);
-						$('#sub_category_id').val(result.scid);
-					}, "json");
-				}
-			}
-		);
-		
-		$('#sub_category2_id').change(
-			function() {
-				var selectedText = $('#sub_category2_id option:selected').text();
-				if(selectedText != '▼Pilih') {
-					$.post('/manager/sub-category2/get-detail/q/', { q: $(this).val() }, function(result) {
-						$('#category_id').val(result.cid);
-						$('#sub_category_id').val(result.scid);
-						$('#sub_category1_id').val(result.sc1id);
-					}, "json");
-				}
-			}
-		);
-		
-		if( $("#call_us").is(':checked') ) {
-			$("#price").attr( 'disabled', true);
-			$("#price").val("");
-		}
-		
-		$("#promo_period_start").datepicker({
-			dateFormat: 'yy-mm-dd'
-		});
-		$("#promo_period_end").datepicker({
-			dateFormat: 'yy-mm-dd'
-		});
+        $('#category_id').change(
+            function() {
+                var selectedText = $('#category_id option:selected').text();
+                if(selectedText == '▼Pilih') {
+                    $('#sub_category_id').load('/manager/sub-category/get-list');
+                    $('#sub_category1_id').load('/manager/sub-category1/get-list');
+                    $('#sub_category2_id').load('/manager/sub-category2/get-list');
+                    $('#sub_category_id').val('');
+                    $('#sub_category1_id').val('');
+                    $('#sub_category2_id').val('');
+                } else {
+                    $('#sub_category_id').load('/manager/sub-category/get-list/q/' , { q: $(this).val() });
+                    $('#sub_category1_id').load('/manager/sub-category1/get-list-by-category/q/' , { q: $(this).val() });
+                    $('#sub_category2_id').load('/manager/sub-category2/get-list-by-category/q/' , { q: $(this).val() });
+                }                
+            }
+        );
+        
+        $('#sub_category_id').change(
+            function() {
+                var selectedText = $('#sub_category_id option:selected').text();
+                if(selectedText == '▼Pilih') {
+                    $('#sub_category1_id').load('/manager/sub-category1/get-list');
+                    $('#sub_category1_id').val('');
+                    $('#sub_category2_id').load('/manager/sub-category2/get-list');
+                    $('#sub_category2_id').val('');
+                } else {
+                    $.post('/manager/sub-category/get-detail/q/', { q: $(this).val() }, function(result) {
+                        $('#category_id').val(result);
+                    });
+                    $('#sub_category1_id').load('/manager/sub-category1/get-list/q/' , { q: $(this).val() });
+                    $('#sub_category2_id').load('/manager/sub-category2/get-list-by-subcategory/q/' , { q: $(this).val() });
+                }
+            }
+        );
+        
+        $('#sub_category1_id').change(
+            function() {
+                var selectedText = $('#sub_category1_id option:selected').text();
+                if(selectedText == '▼Pilih') {
+                    $('#sub_category2_id').load('/manager/sub-category2/get-list');
+                    $('#sub_category2_id').val('');                
+                } else {
+                    $.post('/manager/sub-category1/get-detail/q/', { q: $(this).val() }, function(result) {
+                        $('#category_id').val(result.cid);
+                        $('#sub_category_id').val(result.scid);
+                    }, "json");
+                }
+            }
+        );
+        
+        $('#sub_category2_id').change(
+            function() {
+                var selectedText = $('#sub_category2_id option:selected').text();
+                if(selectedText != '▼Pilih') {
+                    $.post('/manager/sub-category2/get-detail/q/', { q: $(this).val() }, function(result) {
+                        $('#category_id').val(result.cid);
+                        $('#sub_category_id').val(result.scid);
+                        $('#sub_category1_id').val(result.sc1id);
+                    }, "json");
+                }
+            }
+        );
+        
+        if( $("#call_us").is(':checked') ) {
+            $("#price").attr( 'disabled', true);
+            $("#price").val("");
+        }
+        
+        $("#promo_period_start").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#promo_period_end").datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
     });
 
-	function check() {
-		if( document.getElementById("call_us").checked == true ) {
-			document.getElementById("price").value = "";
-			document.getElementById("price").disabled = true;
-		} else {
-			document.getElementById("price").disabled = false;
-		}
-	}
+    function check() {
+        if( document.getElementById("call_us").checked == true ) {
+            document.getElementById("price").value = "";
+            document.getElementById("price").disabled = true;
+        } else {
+            document.getElementById("price").disabled = false;
+        }
+    }
 </script> 
 
 <!--content-->
@@ -94,10 +94,10 @@
   <div id="contents_in">
 
     <div id="contents_title">
-		Edit Produk 
+        Edit Produk 
     </div>
     <div class="contents_space">
-    	<div class="table_container">
+        <div class="table_container">
                 <form method="post" action="/manager/product/edit/id/<?= $this->model['id'] ?>" enctype="multipart/form-data">
                     <table id="top">
                         <tr>
@@ -181,32 +181,32 @@
                         <tr>
                             <td class="first">Gambar</td>
                             <td width="80%" class="color_gray"> 
-							<?= my_mb_error($this->error_str, 'image_url') ?>
-								<div class="item_img" style="height:250px">
-									<? if($this->model['th155_url1']) : ?>
-								　<img src="<?=$this->model['th155_url1']?>" alt="produk" width="100"><br />
-								　<input name="checkbox1" value="1" type="checkbox" style="width:10px;">
-								　Hapus<br />
-									<? endif; ?>
-									<?= $this->form->getElement('image_url1') ?>
-									<span class="red">※</span> Harus diisi.<br/>Jika hanya ada satu gambar,<br/>Silakan gunakan field ini.
-								</div>
-								<div class="item_img" style="height:250px">
-									<? if($this->model['th155_url2']) : ?>
-								　<img src="<?=$this->model['th155_url2']?>" alt="produk" width="100"><br />
-								　<input name="checkbox2" value="1" type="checkbox" style="width:10px;">
-								　Hapus
-									<? endif; ?>
-									<?= $this->form->getElement('image_url2') ?>
-								</div>
-								<div class="item_img" style="height:250px">
-									<? if($this->model['th155_url3']) : ?>
-								　<img src="<?=$this->model['th155_url3']?>" alt="produk" width="100"><br />
-								　<input name="checkbox3" value="1" type="checkbox" style="width:10px;">
-								　Hapus<br />
-									<? endif; ?>
-									<?= $this->form->getElement('image_url3') ?>
-								</div>
+                            <?= my_mb_error($this->error_str, 'image_url') ?>
+                                <div class="item_img" style="height:250px">
+                                    <?php if($this->model['th082_url1']) : ?>
+                                　<img src="<?=$this->model['th082_url1']?>" alt="produk" width="100"><br />
+                                　<input name="checkbox1" value="1" type="checkbox" style="width:10px;">
+                                　Hapus<br />
+                                    <?php endif; ?>
+                                    <?= $this->form->getElement('image_url1') ?>
+                                    <span class="red">※</span> Harus diisi.<br/>Jika hanya ada satu gambar,<br/>Silakan gunakan field ini.
+                                </div>
+                                <div class="item_img" style="height:250px">
+                                    <?php if($this->model['th155_url2']) : ?>
+                                　<img src="<?=$this->model['th155_url2']?>" alt="produk" width="100"><br />
+                                　<input name="checkbox2" value="1" type="checkbox" style="width:10px;">
+                                　Hapus
+                                    <?php endif; ?>
+                                    <?= $this->form->getElement('image_url2') ?>
+                                </div>
+                                <div class="item_img" style="height:250px">
+                                    <?php if($this->model['th155_url3']) : ?>
+                                　<img src="<?=$this->model['th155_url3']?>" alt="produk" width="100"><br />
+                                　<input name="checkbox3" value="1" type="checkbox" style="width:10px;">
+                                　Hapus<br />
+                                    <?php endif; ?>
+                                    <?= $this->form->getElement('image_url3') ?>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -234,16 +234,16 @@
                             </td>
                         </tr>
                     </table>
-		</div>
-			<table class="bottom" style="width:100%">
-				<tr>
-				  <td align="center">
-					<input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" class="input_b2" id = "update" value="Edit"/>
-				  </td>
-				</tr>
-			</table>
+        </div>
+            <table class="bottom" style="width:100%">
+                <tr>
+                  <td align="center">
+                    <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" class="input_b2" id = "update" value="Edit"/>
+                  </td>
+                </tr>
+            </table>
             </form>
     </div>
 

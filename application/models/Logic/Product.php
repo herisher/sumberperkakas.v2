@@ -10,7 +10,7 @@ class Logic_Product extends Logic_Base {
             return $this->db()->fetchRow("SELECT * FROM `dtb_product` WHERE `id` = ? AND `disp_flag` = 1", $id);
         }
     }
-	
+    
     /**
      * current price
      */
@@ -56,7 +56,7 @@ class Logic_Product extends Logic_Base {
     /**
      * latest
      */
-    public function getLatestProduct($limit = 10) {
+    public function getLatestProduct($limit = 12) {
         $products = $this->db()->fetchAll(
             "SELECT * FROM dtb_product WHERE disp_flag = 1 ORDER BY create_date DESC LIMIT {$limit}"
         );
@@ -71,10 +71,10 @@ class Logic_Product extends Logic_Base {
     /**
      * latest
      */
-    public function getPromoProduct($limit = 8) {
+    public function getPromoProduct($limit = 12) {
         $products = $this->db()->fetchAll(
             "SELECT * FROM dtb_product WHERE disp_flag = 1 AND promo_price != 0 ".
-			"ORDER BY create_date DESC LIMIT {$limit}"
+            "ORDER BY create_date DESC LIMIT {$limit}"
         );
         $models = array();
         foreach($products as $product) {
@@ -87,10 +87,10 @@ class Logic_Product extends Logic_Base {
     /**
      * popular
      */
-    public function getPopularProduct($limit = 8) {
+    public function getPopularProduct($limit = 12) {
         $products = $this->db()->fetchAll(
             "SELECT * FROM dtb_product AS pr WHERE pr.disp_flag = 1
-			ORDER BY viewer DESC LIMIT {$limit}"
+            ORDER BY viewer DESC LIMIT {$limit}"
         );
         $models = array();
         foreach($products as $product) {
