@@ -1,0 +1,45 @@
+<?= $this->render('sidemenu/product.html') ?>
+
+<!--content-->
+<div id="contents">
+  <div id="contents_in">
+
+    <div id="contents_title">
+		Edit Sub Kategori 
+    </div>
+    <div class="contents_space">
+    	<div class="table_container">
+                <form method="post" action="/manager/sub-category1/edit/id/<?= $this->model['id'] ?>">
+                    <table id="top" enctype="multipart/form-data">
+                        <tr>
+                            <td class="first">Nama</td>
+                            <td width="80%" class="color_gray"> 
+                                <?= my_mb_error($this->error_str, 'name') ?>
+                                <?= $this->form->getElement('name') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Ditampilkan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_flag') ?>
+                                <?= $this->form->getElement('disp_flag') ?></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="bottom" style="width:100%">
+            <tr>
+              <td align="center">
+                <input type="button" class="input_b2" value="Kembali" onClick="javascript:window.location='/manager/<?= $this->class_name ?>/goback-list';" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" class="input_b2" id = "update" value="Edit"/>
+              </td>
+            </tr>
+          </table>
+            </form>
+    </div>
+
+  </div>
+</div>
+<br class="cl">
+<!--content end-->

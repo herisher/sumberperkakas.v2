@@ -6055,7 +6055,7 @@ table.table_block td {
 								Homepage Tabs 
 -------------------------------------------------------------------------------- */
 #home-page-tabs {
-  border: none; }
+  border-bottom: 4px solid #DDD; }
   #home-page-tabs > li {
     margin-bottom: 0;
     margin-right: 20px; }

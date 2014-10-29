@@ -56,7 +56,7 @@ class Logic_Product extends Logic_Base {
     /**
      * latest
      */
-    public function getLatestProduct($limit = 12) {
+    public function getLatestProduct($limit = 3) {
         $products = $this->db()->fetchAll(
             "SELECT * FROM dtb_product WHERE disp_flag = 1 ORDER BY create_date DESC LIMIT {$limit}"
         );

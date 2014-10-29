@@ -65,239 +65,26 @@
             <div class="columns-container">
                 <div id="columns" class="container">
                     <div class="row">
-                        <div id="left_column" class="column col-xs-12 col-sm-3"><!-- Block categories module -->
-                            <div id="categories_block_left" class="block">
-                                <h2 class="title_block">Categories</h2>
-                                <div class="block_content" style="">
-                                    <ul class="tree dhtml">
-                                        <?php foreach($this->categories as $category) : ?>
-                                        <li>
-                                            <a href="/product/list/mcid/<?=$category['id']?>" title="<?=$category['name']?>">
-                                                <?=$category['name']?>
-                                            </a>
-                                            <?php if( isset($category['sub_category']) ) : ?>
-                                            <ul style="display: none;">
-                                                <?php foreach( $category['sub_category'] as $sub_categories ) : ?>
-                                                <li>
-                                                    <a href="/product/list/mcid/<?=$category['id']?>/cid/<?=$sub_categories['id']?>" title="<?=$sub_categories['name']?>">
-                                                        <?=$sub_categories['name']?>
-                                                    </a>
-                                                    <!--
-                                                    <ul style="display: none;">
-                                                        <li>
-                                                            <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                Sit amet conse
-                                                            </a>
-                                                            <ul style="display: none;">
-                                                                <li>
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Lorem ipsum dolor
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Sit amet conse
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Ctetur adipisicing elit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Sed do eiusmod
-                                                                    </a>
-                                                                </li><li>
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Tempor incididunt ut
-                                                                    </a>
-                                                                </li>
-                                                                <li class="last">
-                                                                    <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                        Labore et dolore
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                Ctetur adipisicing elit
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                Sed do eiusmod
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                Tempor incididunt ut
-                                                            </a>
-                                                        </li>
-                                                        <li class="last">
-                                                            <a href="/product/list" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec felis justo. Duis tincidunt fringilla magna quis dignissim. Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing augue sollicitudin id. In accumsan, sapien ut accumsan vehicula, tortor risus sollicitudin diam, quis eleifend metus dolor in augue. Vivamus nec adipiscing lorem, quis fermentum orci. Proin venenatis quam non nunc placerat, ac posuere erat suscipit. Suspendisse potenti. In in tortor velit. Quisque non enim cursus magna cursus pretium. Praesent et sollicitudin nisl. Nunc mollis, mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus arcu elit et lorem. Praesent et tellus diam. Duis porttitor vitae arcu ut posuere.">
-                                                                Labore et dolore
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    -->
-                                                </li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                            <?php endif; ?>
-                                        </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- /Block categories module -->
-                            <div id="htmlcontent_left">
-                                <ul class="htmlcontent-home clearfix row">
-                                    <li class="htmlcontent-item-1">
-                                        <div class="item-html">
-                                        <h2>Free <strong>Shipping</strong></h2>
-                                        <h3>on orders over</h3>
-                                        <h3>IDR 500.000,-</h3>
-                                        <span>This offer is valid on all our store items.</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- MODULE Block Promo -->
-                            <div id="special_block_right" class="block">
-                                <p class="title_block">
-                                    <a href="/product/list" title="New Arrival">
-                                        New Arrival
-                                    </a>
-                                </p>
-                                <div class="block_content products-block" style="">
-                                    <ul>
-                                        <li class="clearfix">
-                                            <a class="products-block-image" href="detail">
-                                                <img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/7/3/73-tm_home_default.jpg" alt="" title="T-Hinges - Heavy Duty - Zinc Plated">
-                                            </a>
-                                            <div class="product-content">
-                                                <h5>
-                                                    <a class="product-name" href="detail" title="T-Hinges - Heavy Duty - Zinc Plated">
-                                                        T-Hinges - Heavy Duty - Zinc Plated
-                                                    </a>
-                                                </h5>
-                                                    <!--p class="product-description">
-                                                        Donec quis egestas neque. Integer...
-                                                    </p-->
-                                                    <div class="price-box">
-                                                        <span class="price special-price">IDR 779.270</span>
-                                                        <span class="price-percent-reduction">-5%</span>
-                                                        <span class="old-price">IDR 820.280</span>
-                                                    </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div>
-                                        <a class="btn btn-default button button-small" href="/product/list" title="All Promo">
-                                            <span>
-                                                All Promo
-                                                <i class="icon-chevron-right right"></i>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /MODULE Block Promo -->
-                        </div>
+                        <?= $this->render("leftmenu.html"); ?>
                         <div id="center_column" class="center_column col-xs-12 col-sm-9">
                             <div id="top_column" class="center_column">
                                 <!-- Module HomeSlider -->
                                 <div id="homepage-slider">
                                     <ul id="homeslider">
+                                        <?php foreach( $this->image_slider as $image ) : ?>
                                         <li class="homeslider-container">
-                                            <a href="/product/list" title="sample-1">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/homeslider/images/slide-1.jpg" width="870" height="315" alt="sample-1">
+                                            <a href="<?= $image['detail_image_url'] ?>" title="Deskripsi Gambar">
+                                                <img src="<?= $image['image_url'] ?>" width="870" height="315" alt="Gambar Berjalan">
                                             </a>
-                                            <div class="homeslider-description">
-                                                <h2>Ladders</h2> 
-                                                <h3>Get up to</h3> 
-                                                <h4>20% off</h4> 
-                                                <span>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                                                <b>Shop now !</b>
-                                            </div>
                                         </li>
-                                        <li class="homeslider-container">
-                                            <a href="/product/list" title="sample-2">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/homeslider/images/slide-2.jpg" width="870" height="315" alt="sample-2">
-                                            </a>
-                                            <div class="homeslider-description">
-                                                <h2>Drywall</h2> 
-                                                <h3>Get up to</h3> 
-                                                <h4>20% off</h4> 
-                                                <span>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> 
-                                                <b>Shop now !</b>
-                                            </div>
-                                        </li>
-                                        <li class="homeslider-container">
-                                            <a href="/product/list" title="sample-2">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/homeslider/images/slide-3.jpg" width="870" height="315" alt="sample-2">
-                                            </a>
-                                            <div class="homeslider-description">
-                                                <h2>Insulation</h2> 
-                                                <h3>Get up to</h3> 
-                                                <h4>20% off</h4> 
-                                                <span>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> 
-                                                <b>Shop now !</b>
-                                            </div>
-                                        </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
                                 <!-- /Module HomeSlider -->
-                                
-                                <div id="htmlcontent_home">
-                                    <ul class="htmlcontent-home clearfix row">
-                                        <li class="htmlcontent-item-1 col-xs-6">
-                                            <a href="/product/list" class="item-link" title="">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/themeconfigurator/img/banner-img1.jpg" class="item-img" title="" alt="" width="181" height="135">
-                                                <div class="item-html">
-                                                    <h2>Lumber &amp;Composites</h2> 
-                                                    <span>Lorem ipsum dolor sit amet conse ctetur adipisicing</span> 
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="htmlcontent-item-2 col-xs-6">
-                                            <a href="/product/list" class="item-link" title="">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/themeconfigurator/img/banner-img2.jpg" class="item-img" title="" alt="" width="181" height="135">
-                                                <div class="item-html">
-                                                    <h2>Insulation</h2> 
-                                                    <span>Lorem ipsum dolor sit amet conse ctetur adipisicing</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="htmlcontent-item-3 col-xs-6">
-                                            <a href="/product/list" class="item-link" title="">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/themeconfigurator/img/banner-img3.jpg" class="item-img" title="" alt="" width="181" height="135">
-                                                <div class="item-html">
-                                                    <h2>Drywall</h2> 
-                                                    <span>Lorem ipsum dolor sit amet conse ctetur adipisicing</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="htmlcontent-item-4 col-xs-6">
-                                            <a href="/product/list" class="item-link" title="">
-                                                <img src="http://livedemo00.template-help.com/prestashop_49514/modules/themeconfigurator/img/banner-img4.jpg" class="item-img" title="" alt="" width="181" height="135">
-                                                <div class="item-html">
-                                                    <h2>Moulding &amp;Millwork</h2> 
-                                                    <span>Lorem ipsum dolor sit amet conse ctetur adipisicing</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                             <ul id="home-page-tabs" class="nav nav-tabs clearfix">
                                 <li class="active">
-                                    <a data-toggle="tab" href="list#blocknewproducts" class="blocknewproducts" title="New arrivals">Promo</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="list#homefeatured" class="homefeatured" title="Popular">Popular</a>
+                                    <a data-toggle="tab" href="list#blocknewproducts" class="blocknewproducts" title="New arrivals">Produk Promo</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -338,8 +125,15 @@
                                     <?php endforeach; ?>
                                 </ul>
                                 
+                            </div>
+                            <ul id="home-page-tabs" class="nav nav-tabs clearfix">
+                                <li class="active">
+                                    <a data-toggle="tab" href="list#homefeatured" class="homefeatured" title="Popular">Produk Popular</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
                                 <!-- Products list -->
-                                <ul id="homefeatured" class="product_list grid row homefeatured tab-pane">
+                                <ul id="homefeatured" class="product_list grid row homefeatured tab-pane active">
                                     <?php 
                                         $i = 1;
                                         foreach($this->popular as $item) : ?>
@@ -366,8 +160,7 @@
                                     </li>
                                     <?php endforeach; ?>
                                 </ul>
-                                
-                </div>
+                            </div>
             </div><!-- #center_column -->
             <div class="container">
                 <div class="row">
