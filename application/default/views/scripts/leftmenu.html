@@ -8,7 +8,8 @@
     $new_product = $logic2->getLatestProduct(3);
 ?>
             
-<div id="left_column" class="column col-xs-12 col-sm-3"><!-- Block categories module -->
+<div id="left_column" class="column col-xs-12 col-sm-3">
+    <!-- Block categories module -->
     <div id="categories_block_left" class="block">
         <h2 class="title_block"><a href="/product/list">Katalog Produk</a></h2>
         <div class="block_content" style="">
@@ -22,7 +23,7 @@
                     <ul style="display: none;">
                         <?php foreach( $category['sub_category'] as $sub_categories ) : ?>
                         <li>
-                            <a href="/product/list/mcid/<?=$category['id']?>/cid/<?=$sub_categories['id']?>" title="<?=$sub_categories['name']?>">
+                            <a href="/product/list/cid/<?=$sub_categories['id']?>" title="<?=$sub_categories['name']?>">
                                 <?=$sub_categories['name']?>
                             </a>
                         </li>
@@ -34,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <!-- /Block categories module -->
     <!-- MODULE Block Promo -->
     <div id="special_block_right" class="block">
         <p class="title_block">

@@ -6390,7 +6390,7 @@ ul.footer_links {
   .bottom-pagination-content div.pagination {
     margin: 0;
     float: right;
-    width: 530px;
+    width: 450px;
     text-align: center; }
     @media (min-width: 992px) and (max-width: 1199px) {
       .top-pagination-content div.pagination,
@@ -6507,6 +6507,7 @@ ul.footer_links {
           background: #c5c5c5; }
   .top-pagination-content .compare-form,
   .bottom-pagination-content .compare-form {
+    padding: 11px 0px 0px;
     float: right; }
     @media (max-width: 479px) {
       .top-pagination-content .compare-form,

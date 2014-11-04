@@ -1,0 +1,340 @@
+<?php 
+    //all category
+    $logic1 = New Logic_Category;
+    $categories = $logic1->getAll();
+    
+    //produk terbaru
+    $logic2 = New Logic_Product;
+    $new_product = $logic2->getLatestProduct(3);
+?>
+
+<div id="left_column" class="column col-xs-12 col-sm-3">
+    <!-- Block categories module -->
+    <div id="categories_block_left" class="block">
+        <h2 class="title_block">Boat Docks &amp; Accessories</h2>
+        <div class="block_content" style="">
+            <ul class="tree dhtml">
+                <?php foreach($categories as $category) : ?>
+                <li>
+                    <a href="/product/list/mcid/<?=$category['id']?>" title="<?=$category['name']?>">
+                        <?=$category['name']?>
+                    </a>
+                    <?php if( isset($category['sub_category']) ) : ?>
+                    <ul style="display: none;">
+                        <?php foreach( $category['sub_category'] as $sub_categories ) : ?>
+                        <li>
+                            <a href="/product/list/cid/<?=$sub_categories['id']?>" title="<?=$sub_categories['name']?>">
+                                <?=$sub_categories['name']?>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <!-- /Block categories module -->
+    <!-- Block layered navigation module -->
+    <div id="layered_block_left" class="block">
+        <p class="title_block">Catalog</p>
+        <div class="block_content">
+            <form action="#" id="layered_form">
+                <div>
+                    <div class="layered_filter">
+                        <div class="layered_subtitle_heading">
+                            <span class="layered_subtitle">Brand</span>
+                        </div>
+                            <ul id="ul_layered_manufacturer_0" class="col-lg-12 layered_filter_ul">
+                                <li class="nomargin hiddable col-lg-12">
+                                    <div class="checker" id="uniform-layered_manufacturer_2"><span><input type="checkbox" class="checkbox" name="layered_manufacturer_2" id="layered_manufacturer_2" value="2"></span></div>                                <label for="layered_manufacturer_2">
+                                        <a href="list.html#manufacturer-fusce_a_viverra_nulla" rel="nofollow">
+                                            Fusce a viverra nulla<span> (1)</span>
+                                        </a>
+                                    </label>
+                                </li>
+                                <li class="nomargin hiddable col-lg-12">
+                                    <div class="checker" id="uniform-layered_manufacturer_3"><span><input type="checkbox" class="checkbox" name="layered_manufacturer_3" id="layered_manufacturer_3" value="3"></span></div> 
+                                    <label for="layered_manufacturer_3">
+                                        <a href="list.html#manufacturer-fusce_vitae_auctor_erat" rel="nofollow">
+                                            Fusce vitae auctor erat<span> (2)</span>
+                                        </a>
+                                    </label>
+                                </li>
+                                <li class="nomargin hiddable col-lg-12">
+                                    <div class="checker" id="uniform-layered_manufacturer_4">
+                                        <span><input type="checkbox" class="checkbox" name="layered_manufacturer_4" id="layered_manufacturer_4" value="4"></span>
+                                    </div> 
+                                    <label for="layered_manufacturer_4">
+                                        <a href="list.html#manufacturer-lorem_ipsum_dolor" rel="nofollow">
+                                            Lorem ipsum dolor<span> (1)</span>
+                                        </a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                <input type="hidden" name="id_category_layered" value="31">
+            </form>
+        </div>
+        <div id="layered_ajax_loader" style="display: none;">
+            <p>
+                <img src="http://livedemo00.template-help.com/prestashop_49514/img/loader.gif" alt="">
+                <br>Loading...
+            </p>
+        </div>
+    </div>
+    <!-- /Block layered navigation module -->
+    <!-- Block manufacturers module -->
+    <div id="manufacturers_block_left" class="block blockmanufacturer">
+        <p class="title_block">
+                        <a href="/product/list" title="Manufacturers">
+                        Brand
+                        </a>
+                </p>
+        <div class="block_content list-block" style="">
+                                        <ul>
+                                                                            <li class="first_item">
+                                    <a href="/product/list" title="More about Duis semper congue metus">
+                                        Duis semper congue metus
+                                    </a>
+                                </li>
+                                                                                                    <li class="item">
+                                    <a href="/product/list" title="More about Fusce a viverra nulla">
+                                        Fusce a viverra nulla
+                                    </a>
+                                </li>
+                                                                                                    <li class="item">
+                                    <a href="/product/list" title="More about Fusce vitae auctor erat">
+                                        Fusce vitae auctor erat
+                                    </a>
+                                </li>
+                                                                                                    <li class="item">
+                                    <a href="/product/list" title="More about Lorem ipsum dolor">
+                                        Lorem ipsum dolor
+                                    </a>
+                                </li>
+                                                                                                    <li class="item">
+                                    <a href="/product/list" title="More about Nullam aliquam odio tellus">
+                                        Nullam aliquam odio tellus
+                                    </a>
+                                </li>
+                                                                                                                                                        </ul>
+                                        </div>
+    </div>
+    <!-- /Block manufacturers module -->
+    <!-- MODULE Block best sellers -->
+    <div id="best-sellers_block_right" class="block products_block">
+        <h4 class="title_block">
+            <a href="/product/list" title="View a top sellers products">Top sellers</a>
+        </h4>
+        <div class="block_content" style="">
+                <ul class="block_content products-block" style="">
+                            <li class="clearfix">
+                    <a href="/product/detail/id/xx" title="" class="products-block-image content_img clearfix">
+                        <img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/1/9/19-tm_home_default.jpg" alt="">
+                    </a>
+                    <div class="product-content">
+                        <h5>
+                            <a class="product-name" href="/product/detail/id/xx" title="">
+                                Xtend and Climb FW-71
+                            </a>
+                        </h5>
+                        <p class="product-description">Mi sit amet porta luctus, neque velit volutpat sapien, eleifend rhoncus...</p>
+                                                <div class="price-box">
+                                <span class="price">$394.64</span>
+                            </div>
+                                        </div>
+                </li>
+                        <li class="clearfix">
+                    <a href="/product/detail/id/xx" title="" class="products-block-image content_img clearfix">
+                        <img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/4/6/46-tm_home_default.jpg" alt="">
+                    </a>
+                    <div class="product-content">
+                        <h5>
+                            <a class="product-name" href="/product/detail/id/xx" title="">
+                                Antique Bronze Door Chain
+                            </a>
+                        </h5>
+                        <p class="product-description">Proin venenatis quam non nunc placerat, ac posuere erat suscipit....</p>
+                                                <div class="price-box">
+                                <span class="price">$428.96</span>
+                            </div>
+                                        </div>
+                </li>
+                        <li class="clearfix">
+                    <a href="/product/detail/id/xx" title="" class="products-block-image content_img clearfix">
+                        <img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/2/2-tm_home_default.jpg" alt="">
+                    </a>
+                    <div class="product-content">
+                        <h5>
+                            <a class="product-name" href="/product/detail/id/xx" title="">
+                                Earthwool Rafter Roll Insulation
+                            </a>
+                        </h5>
+                        <p class="product-description">Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing...</p>
+                                                <div class="price-box">
+                                <span class="price">$122.51</span>
+                            </div>
+                                        </div>
+                </li>
+                    </ul>
+            <div class="lnk">
+                <a href="/product/list" title="All best sellers" class="btn btn-default button button-small">
+                    <span>
+                        All best sellers
+                        <i class="icon-chevron-right right"></i>
+                       </span>
+                </a>
+            </div>
+            </div>
+    </div>
+    <!-- /MODULE Block best sellers -->
+    <!-- MODULE Block new products -->
+    <div id="new-products_block_right" class="block products_block">
+        <h4 class="title_block">
+            <a href="/product/list" title="New products">New products</a>
+        </h4>
+        <div class="block_content products-block" style="">
+                        <ul class="products">
+                                        <li class="clearfix">
+                            <a class="products-block-image" href="/product/detail/id/xx" title=""><img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/2/8/28-tm_home_default.jpg" alt="Hand Painted Ornate Crown Molding"></a>
+                            <div class="product-content">
+                                <h5>
+                                    <a class="product-name" href="/product/detail/id/xx" title="Hand Painted Ornate Crown Molding">Hand Painted Ornate Crown Molding</a>
+                                </h5>
+                                <p class="product-description">Nunc luctus dictum tortor, ac euismod dolor vulputate at. Donec accumsan...</p>
+                                                                                                    <div class="price-box">
+                                            <span class="price">
+                                                $928.96                                        </span>
+                                        </div>
+                                                                                        </div>
+                        </li>
+                                        <li class="clearfix">
+                            <a class="products-block-image" href="/product/detail/id/xx" title=""><img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/3/7/37-tm_home_default.jpg" alt="Ceiling Tile - Faux Tin Like - Anet Antique"></a>
+                            <div class="product-content">
+                                <h5>
+                                    <a class="product-name" href="/product/detail/id/xx" title="Ceiling Tile - Faux Tin Like - Anet Antique">Ceiling Tile - Faux Tin Like - Anet Antique</a>
+                                </h5>
+                                <p class="product-description">Donec quis egestas neque. Integer mattis velit nisi, quis adipiscing...</p>
+                                                                                                    <div class="price-box">
+                                            <span class="price">
+                                                $428.96                                        </span>
+                                        </div>
+                                                                                        </div>
+                        </li>
+                                        <li class="clearfix">
+                            <a class="products-block-image" href="/product/detail/id/xx" title=""><img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/4/6/46-tm_home_default.jpg" alt="Antique Bronze Door Chain"></a>
+                            <div class="product-content">
+                                <h5>
+                                    <a class="product-name" href="/product/detail/id/xx" title="Antique Bronze Door Chain">Antique Bronze Door Chain</a>
+                                </h5>
+                                <p class="product-description">Proin venenatis quam non nunc placerat, ac posuere erat suscipit....</p>
+                                                                                                    <div class="price-box">
+                                            <span class="price">
+                                                $428.96                                        </span>
+                                        </div>
+                                                                                        </div>
+                        </li>
+                                </ul>
+                <div>
+                    <a href="/product/list" title="All new products" class="btn btn-default button button-small">
+                        <span>
+                            All new products
+                            <i class="icon-chevron-right right"></i>
+                        </span>
+                    </a>
+                </div>
+                </div>
+    </div>
+    <!-- /MODULE Block new products -->        
+    <div id="htmlcontent_left">
+        <ul class="htmlcontent-home clearfix row">
+            <li class="htmlcontent-item-1">
+                                                                                                        <div class="item-html">
+                <h2>Free <strong>Shipping</strong></h2> <h3>on orders over $99</h3> <span>This offer is valid on all our store items.</span>
+            </div>
+                                            </li>
+        </ul>
+    </div>
+    <!-- MODULE Block specials -->
+    <div id="special_block_right" class="block">
+        <p class="title_block">
+            <a href="/product/list" title="Specials">
+                Specials
+            </a>
+        </p>
+        <div class="block_content products-block" style="">
+                <ul>
+                <li class="clearfix">
+                    <a class="products-block-image" href="/product/detail/id/xx">
+                        <img class="replace-2x img-responsive" src="http://livedemo00.template-help.com/prestashop_49514/img/p/2/2-tm_home_default.jpg" alt="" title="Earthwool Rafter Roll Insulation">
+                    </a>
+                    <div class="product-content">
+                        <h5>
+                            <a class="product-name" href="/product/detail/id/xx" title="Earthwool Rafter Roll Insulation">
+                                Earthwool Rafter Roll Insulation
+                            </a>
+                        </h5>
+                                                <p class="product-description">
+                                Donec quis egestas neque. Integer...
+                            </p>
+                                            <div class="price-box">
+                                                        <span class="price special-price">
+                                    $122.51
+                                                                </span>
+                                                                                                                                     <span class="price-percent-reduction">-5%</span>
+                                                                                             <span class="old-price">
+                                    $128.96
+                                                                </span>
+                                                </div>
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <a class="btn btn-default button button-small" href="/product/list" title="All specials">
+                    <span>
+                        All specials
+                        <i class="icon-chevron-right right"></i>
+                    </span>
+                </a>
+            </div>
+            </div>
+    </div>
+    <!-- /MODULE Block specials -->
+    <!-- Block Viewed products -->
+    <div id="viewed-products_block_left" class="block">
+        <p class="title_block">Viewed products</p>
+        <div class="block_content products-block" style="">
+            <ul>
+                                <li class="clearfix first_item">
+                        <a class="products-block-image" href="/product/detail/id/xx" title="More about Insulation for Hot or Cold Pipes">
+                            <img src="http://livedemo00.template-help.com/prestashop_49514/img/p/1/0/10-tm_home_default.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="product-content">
+                            <h5>
+                                <a class="product-name" href="/product/detail/id/xx" title="More about Insulation for Hot or Cold Pipes">
+                                    Insulation for Hot or...
+                                </a>
+                            </h5>
+                            <p class="product-description">Proin venenatis quam non nunc...</p>
+                        </div>
+                    </li>
+                                <li class="clearfix last_item">
+                        <a class="products-block-image" href="/product/detail/id/xx" title="More about Brass Plated Security Guard">
+                            <img src="http://livedemo00.template-help.com/prestashop_49514/img/p/1/0/3/103-tm_home_default.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="product-content">
+                            <h5>
+                                <a class="product-name" href="/product/detail/id/xx" title="More about Brass Plated Security Guard">
+                                    Brass Plated Security...
+                                </a>
+                            </h5>
+                            <p class="product-description">Mi sit amet porta luctus, neque velit...</p>
+                        </div>
+                    </li>
+                        </ul>
+        </div>
+    </div>
+</div>
