@@ -57,102 +57,7 @@
     <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>
     <![endif]-->
     <div id="page">
-        <div class="header-container">
-            <header id="header">
-                <div class="banner">
-                    <div class="container">
-                        <div class="row"></div>
-                    </div>
-                </div>
-                <div style="margin-top: 20px;">
-                    <div class="container">
-                        <div class="row">
-                            <div id="header_logo">
-                                <a href="/" title="Storage Building Materials ">
-                                    <img class="logo img-responsive" width="276" height="82" src="/img/logo.png" alt="SumberPerkakas.co.id" title="SumberPerkakas.co.id">
-                                </a>
-                            </div>
-                            <!-- Block user information module NAV  -->
-                            <ul class="user_info" style="visibility:hidden;">
-                                <li>
-                                    <a href="#" title="View my customer account" rel="nofollow">
-                                        <i class="icon-user"></i>Your Account
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="login" href="#" rel="nofollow" title="Login to your customer account">
-                                        <i class="icon-lock"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /Block usmodule NAV -->
-                            <!-- MODULE Block cart -->
-                            <div class="box-cart col-sm-3 clearfix" style="visibility: hidden">
-                                <div class="shopping_cart">
-                                    <a href="#" title="View my shopping cart" rel="nofollow">
-                                        <b>Cart</b>
-                                        <span class="ajax_cart_quantity unvisible">0</span>
-                                        <span class="ajax_cart_product_txt unvisible">Product</span>
-                                        <span class="ajax_cart_product_txt_s unvisible">Products</span>
-                                        <span class="ajax_cart_total unvisible"></span>
-                                        <span class="ajax_cart_no_product">(empty)</span>
-                                    </a>
-                                    <div class="cart_block block exclusive">
-                                        <div class="block_content">
-                                            <!-- block list of products -->
-                                            <div class="cart_block_list">
-                                                <p class="cart_block_no_products">
-                                                    No products
-                                                </p>
-                                                <div class="cart-prices">
-                                                    <div class="cart-prices-line first-line">
-                                                        <span class="price cart_block_shipping_cost ajax_cart_shipping_cost">
-                                                            Free shipping!
-                                                        </span>
-                                                        <span>
-                                                            Shipping
-                                                        </span>
-                                                    </div>
-                                                    <div class="cart-prices-line last-line">
-                                                        <span class="price cart_block_total ajax_block_cart_total">$0.00</span>
-                                                        <span>Total</span>
-                                                    </div>
-                                                </div>
-                                                <p class="cart-buttons">
-                                                    <a id="button_order_cart" class="btn btn-default button button-small" href="#" title="Check out" rel="nofollow">
-                                                        <span>
-                                                            Check out
-                                                            <i class="icon-chevron-right right"></i>
-                                                        </span>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div><!-- .cart_block -->
-                                </div>
-                            </div>
-                            <!-- #layer_cart -->
-                            <div class="layer_cart_overlay"></div>
-
-                            <!-- /MODULE Block cart --><!-- Block search module TOP -->
-                            <div id="search_block_top" class=" clearfix">
-                                <form id="searchbox" method="get" action="list.html">
-                                    <input type="hidden" name="controller" value="search">
-                                    <input type="hidden" name="orderby" value="position">
-                                    <input type="hidden" name="orderway" value="desc">
-                                    <input class="search_query form-control ac_input" type="text" id="search_query_top" name="search_query" placeholder="Search" value="" autocomplete="off">
-                                    <button type="submit" name="submit_search" class="btn btn-default button-search">
-                                        <span>Search</span>
-                                    </button>
-                                </form>
-                            </div>
-                            <!-- /Block search module TOP -->
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </div>
-            
+        <?= $this->render("header.html"); ?>
         <div class="columns-container-bg1">
            <div class="columns-container">
                 <div id="columns" class="container">
@@ -160,24 +65,24 @@
                         <div id="center_column" class="center_column col-xs-12 col-sm-12">
                             <!-- Breadcrumb -->
                             <div class="breadcrumb clearfix">
-                                <a class="home" href="index.html" title="Return to Home">
+                                <a class="home" href="/" title="Halaman Utama">
                                     <i class="icon-home"></i>
                                 </a>
-                                <span class="navigation-pipe" >&gt;</span>
-                                <span class="navigation_page">Our stores</span>
+                                <span class="navigation-pipe">&gt;</span>
+                                <span class="navigation_page">Lokasi Toko</span>
                             </div>
                             <!-- /Breadcrumb -->
                             <div id="top_column" class="center_column"></div>
                             <h1 class="page-heading">
-                                Our stores
+                                Lokasi Toko
                             </h1>
                             <table id="stores-table" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="num">#</th>
-                                        <th>Store</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
+                                        <th>Cabang</th>
+                                        <th>Alamat</th>
+                                        <th>Telepon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -199,7 +104,7 @@
                                                             BOGOR, Jawa Barat<br>
                                                             Indonesia
                                         </td>
-                                        <td class="distance">+608932851135</td>
+                                        <td class="distance">+628932851135</td>
                                     </tr>
                                     <tr>
                                         <td class="num">3</td>

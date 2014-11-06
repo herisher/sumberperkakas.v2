@@ -3,8 +3,8 @@
  * product
  */
 class ProductController extends BaseController {
-    const NS_SEARCH = "/product/search";
-    const NS_LIST = "/product/list";
+    const NS_SEARCH = "/default/product/search";
+    const NS_LIST = "/default/product/list";
     
     /**
      * list
@@ -85,6 +85,7 @@ class ProductController extends BaseController {
         $sub_category2_id =  $session->sub_category2_id;
         
         $this->view->hashtag = "";
+        $disp_name = "Katalog Produk";
         if ($main_category_id) {
             $where['p.category_id = ?'] = $main_category_id;
             $this->view->mcid = $main_category_id;
@@ -150,6 +151,7 @@ class ProductController extends BaseController {
         }
         
         $select = $this->model("Dao_Product")->createWherePhrase($where, $order_by);
+        $select2 = $this->model("Dao_Product")->createWherePhrase($where, $order_by);
         
         // Clear search session
         $_SESSION['keyword'] = '';
@@ -159,8 +161,27 @@ class ProductController extends BaseController {
             ->setIntegrityCheck(false)
             ->from(array('p' => 'dtb_product'))
             ->join(array('b' => 'dtb_brand'), 'p.brand_id = b.id', array('b.name AS brand_name'));
+            
+        $select2
+            ->setIntegrityCheck(false)
+            ->from(array('p' => 'dtb_product'))
+            ->join(array('b' => 'dtb_brand'), 'p.brand_id = b.id', array('b.name AS brand_name'));
 
-        $this->createNavigator($select);
+        $brand_list = $this->db()->fetchAll("SELECT DISTINCT(`brand_id`), COUNT(`brand_id`) AS `count_id` FROM (" . $select2 . ") AS `product`" );
+        foreach( $brand_list AS &$brand ) {
+            $brand['name'] = $this->model('Logic_Brand')->getName($brand['brand_id']);
+        }
+
+        // setting the limit
+        $limit = 20;
+        if( isset($session->limit) ) {
+            $limit = $session->limit;
+        }
+        if ($this->getRequest()->getParam('limit')) {
+            $limit = $this->getRequest()->getParam('limit');
+        }
+        
+        $this->createNavigator($select, $limit);
         
         
         echo $select->__toString();
@@ -178,12 +199,14 @@ class ProductController extends BaseController {
         $this->view->disp_crumb = $disp_crumb;
         $this->view->render_url = $render_url;
         $this->view->title = $disp_name;
+        $this->view->brand_list = $brand_list;
     }
 
     /**
      * Product Search
      */
     public function searchAction() {
+        $session = new Zend_Session_Namespace(self::NS_SEARCH);
         // keyword
         $keyword = $this->_getParam('keyword');
         if (isset($keyword)) {
@@ -191,7 +214,6 @@ class ProductController extends BaseController {
             $this->_redirect('/product/search');
         }
         $keyword = $_SESSION['keyword'];
-        $this->view->keyword = urlencode($keyword);
         
         // where clause
         $where = array(
@@ -214,7 +236,16 @@ class ProductController extends BaseController {
             ->from(array('p' => 'dtb_product'))
             ->join(array('b' => 'dtb_brand'), 'p.brand_id = b.id', array('b.name AS brand_name'));
 
-        $this->createNavigator($select, 20);
+        // setting the limit
+        $limit = 20;
+        if( isset($session->limit) ) {
+            $limit = $session->limit;
+        }
+        if ($this->getRequest()->getParam('limit')) {
+            $limit = $this->getRequest()->getParam('limit');
+        }
+        
+        $this->createNavigator($select, $limit);
 
         $models = array();
         foreach($this->view->paginator AS $model) {
@@ -225,6 +256,8 @@ class ProductController extends BaseController {
         }
 
         $this->view->models = $models;
+        $this->view->keyword = urlencode($keyword);
+        $this->view->title = $keyword;
     }
 
     /**
@@ -250,13 +283,37 @@ class ProductController extends BaseController {
         // promo setting
         $item['current_price'] = $this->model("Logic_Product")->getCurrentPrice($item);
         
+        $disp_crumb = "";
         $item['category'] = $this->model("Logic_Category")->getName($item['category_id']);
-        $item['sub_category'] = $this->model("Logic_SubCategory")->getName($item['sub_category_id']);
-        $item['sub_category1'] = $this->model("Logic_SubCategory1")->getName($item['sub_category1_id']);
-        $item['sub_category2'] = $this->model("Logic_SubCategory2")->getName($item['sub_category2_id']);
+        if( $item['category'] ) {
+            $disp_crumb .= '<a href="/product/list/mcid/'.$item['category_id'].'">' . $item['category'] . '</a> ';
+            $item['sub_category'] = $this->model("Logic_SubCategory")->getName($item['sub_category_id']);
+            if( $item['sub_category'] ) {
+                $disp_crumb .= "<span class=\"navigation-pipe\">&gt;</span>" .
+                               '<a href="/product/list/cid/' . $item['sub_category_id'] . '">' .$item['sub_category'] . '</a> ';
+                $item['sub_category1'] = $this->model("Logic_SubCategory1")->getName($item['sub_category1_id']);
+                if( $item['sub_category1'] ) {
+                    $disp_crumb .= "<span class=\"navigation-pipe\">&gt;</span>" .
+                                   '<a href="/product/list/scid/' . $item['sub_category1_id'] . '">' .$item['sub_category1'] . '</a> ';
+                    $item['sub_category2'] = $this->model("Logic_SubCategory2")->getName($item['sub_category2_id']);
+                    if( $item['sub_category2'] ) {
+                        $disp_crumb .= "<span class=\"navigation-pipe\">&gt;</span>" .
+                                       '<a href="/product/list/sc2id/' . $item['sub_category2_id'] . '">' .$item['sub_category2'] . '</a> ';
+                    }
+                }
+            }
+        }
+        $brand = $this->model('Dao_Brand')->retrieve($item['brand_id']);
         
-        $this->view->item        = $item;
-        $this->view->brand        = $this->model('Dao_Brand')->retrieve($item['brand_id']);
+        $disp_crumb .= "<span class=\"navigation-pipe\">&gt;</span>" .
+                       '<a href="/product/list/bid/' . $item['brand_id'] . '">' .$brand['name'] . '</a> ' .
+                       "<span class=\"navigation-pipe\">&gt;</span>" .
+                       "<span class=\"navigation_page\">" . $item['name'] . "</span>";
+        
+        $this->view->item   = $item;
+        $this->view->brand  = $this->model('Dao_Brand')->retrieve($item['brand_id']);
+        $this->view->disp_crumb = $disp_crumb;
+        $this->view->brand = $brand;
     }
     
     /**

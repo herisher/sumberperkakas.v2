@@ -58,189 +58,68 @@
 <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>
 <![endif]-->
     <div id="page">
-        <div class="header-container">
-            <header id="header">
-                <div class="banner">
-                    <div class="container">
-                        <div class="row"></div>
-                    </div>
-                </div>
-                <div style="margin-top: 20px;">
-                    <div class="container">
-                        <div class="row">
-                            <div id="header_logo">
-                                <a href="/" title="Storage Building Materials ">
-                                    <img class="logo img-responsive" width="276" height="82" src="/img/logo.png" alt="SumberPerkakas.co.id" title="SumberPerkakas.co.id">
-                                </a>
-                            </div>
-                            <!-- Block user information module NAV  -->
-                            <ul class="user_info" style="visibility:hidden;">
-                                <li>
-                                    <a href="#" title="View my customer account" rel="nofollow">
-                                        <i class="icon-user"></i>Your Account
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="login" href="#" rel="nofollow" title="Login to your customer account">
-                                        <i class="icon-lock"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /Block usmodule NAV -->
-                            <!-- MODULE Block cart -->
-                            <div class="box-cart col-sm-3 clearfix" style="visibility: hidden">
-                                <div class="shopping_cart">
-                                    <a href="#" title="View my shopping cart" rel="nofollow">
-                                        <b>Cart</b>
-                                        <span class="ajax_cart_quantity unvisible">0</span>
-                                        <span class="ajax_cart_product_txt unvisible">Product</span>
-                                        <span class="ajax_cart_product_txt_s unvisible">Products</span>
-                                        <span class="ajax_cart_total unvisible"></span>
-                                        <span class="ajax_cart_no_product">(empty)</span>
-                                    </a>
-                                    <div class="cart_block block exclusive">
-                                        <div class="block_content">
-                                            <!-- block list of products -->
-                                            <div class="cart_block_list">
-                                                <p class="cart_block_no_products">
-                                                    No products
-                                                </p>
-                                                <div class="cart-prices">
-                                                    <div class="cart-prices-line first-line">
-                                                        <span class="price cart_block_shipping_cost ajax_cart_shipping_cost">
-                                                            Free shipping!
-                                                        </span>
-                                                        <span>
-                                                            Shipping
-                                                        </span>
-                                                    </div>
-                                                    <div class="cart-prices-line last-line">
-                                                        <span class="price cart_block_total ajax_block_cart_total">$0.00</span>
-                                                        <span>Total</span>
-                                                    </div>
-                                                </div>
-                                                <p class="cart-buttons">
-                                                    <a id="button_order_cart" class="btn btn-default button button-small" href="#" title="Check out" rel="nofollow">
-                                                        <span>
-                                                            Check out
-                                                            <i class="icon-chevron-right right"></i>
-                                                        </span>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div><!-- .cart_block -->
-                                </div>
-                            </div>
-                            <!-- #layer_cart -->
-                            <div class="layer_cart_overlay"></div>
-
-                            <!-- /MODULE Block cart --><!-- Block search module TOP -->
-                            <div id="search_block_top" class=" clearfix">
-                                <form id="searchbox" method="get" action="list.html">
-                                    <input type="hidden" name="controller" value="search">
-                                    <input type="hidden" name="orderby" value="position">
-                                    <input type="hidden" name="orderway" value="desc">
-                                    <input class="search_query form-control ac_input" type="text" id="search_query_top" name="search_query" placeholder="Search" value="" autocomplete="off">
-                                    <button type="submit" name="submit_search" class="btn btn-default button-search">
-                                        <span>Search</span>
-                                    </button>
-                                </form>
-                            </div>
-                            <!-- /Block search module TOP -->
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </div>
-            
-            <div class="columns-container-bg1">
-           <div class="columns-container">
-            
-                <div id="columns" class="container">                
-            
+        <?= $this->render("header.html"); ?>
+        <div class="columns-container-bg1">
+            <div class="columns-container">
+                <div id="columns" class="container">
                     <div class="row">
-                                                <div id="center_column" class="center_column col-xs-12 col-sm-12">
-                                                    <!-- Breadcrumb -->
-    
-<div class="breadcrumb clearfix">
-    <a class="home" href="http://livedemo00.template-help.com/prestashop_49514/" title="Return to Home">
-        <i class="icon-home"></i>
-    </a>
-            <span class="navigation-pipe" >&gt;</span>
-                    <span class="navigation_page">Contact</span>
-            </div>
-
-<!-- /Breadcrumb -->
-                                            <div id="top_column" class="center_column"></div>
-        
-  
-    
-<h1 class="page-heading bottom-indent">
-    Customer service - Contact us</h1>
-
-    
-    <form action="/prestashop_49514/index.php?controller=contact&amp;amp;live_configurator_token=c5ef1a08b24156fdb860177e681fcfa2&amp;amp;id_shop=1&amp;amp;id_employee=2&amp;amp;theme=&amp;amp;theme_font=" method="post" class="contact-form-box" enctype="multipart/form-data">
+                        <div id="center_column" class="center_column col-xs-12 col-sm-12">
+                            <!-- Breadcrumb -->
+                            <div class="breadcrumb clearfix">
+                                <a class="home" href="/" title="Halaman Utama">
+                                    <i class="icon-home"></i>
+                                </a>
+                                <span class="navigation-pipe" >&gt;</span>
+                                <span class="navigation_page">Hubungi Kami</span>
+                            </div>
+                            <!-- /Breadcrumb -->
+                            <div id="top_column" class="center_column"></div>
+                            <h1 class="page-heading bottom-indent">Hubungi Kami</h1>
+    <form action="/contact/form" method="post" class="contact-form-box" enctype="multipart/form-data">
         <fieldset>
-        <h3 class="page-subheading">send a message</h3>
+        <h3 class="page-subheading">Kirim Pesan</h3>
         <div class="clearfix">
             <div class="col-xs-12 col-md-3">
-                <div class="form-group selector1">
-                    <label for="id_contact">Subject Heading</label>
-                                    <select id="id_contact" class="form-control" name="id_contact">
-                        <option value="0">-- Choose --</option>
-                                                    <option value="2" >Customer service</option>
-                                                    <option value="1" >Webmaster</option>
-                                            </select>
-                </div>
-                    <p id="desc_contact0" class="desc_contact">&nbsp;</p>
-                                            <p id="desc_contact2" class="desc_contact contact-title" style="display:none;">
-                            <i class="icon-comment-alt"></i>
-                            For any question about a product, an order
-                        </p>
-                                            <p id="desc_contact1" class="desc_contact contact-title" style="display:none;">
-                            <i class="icon-comment-alt"></i>
-                            If a technical problem occurs on this website
-                        </p>
-                                                    <p class="form-group">
-                    <label for="email">Email address</label>
-                                            <input class="form-control grey validate" type="text" id="email" name="from" data-validate="isEmail" value="" />
-                                    </p>
-                                                            <div class="form-group selector1">
-                            <label>Order reference</label>
-                                                            <input class="form-control grey" type="text" name="id_order" id="id_order" value="" />
-                                                    </div>
-                                                                                            <p class="form-group">
-                        <label for="fileUpload">Attach File</label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-                        <input type="file" name="fileUpload" id="fileUpload" class="form-control" />
-                    </p>
-                            </div>
+                <p class="form-group">
+                    <label for="email">Judul</label>
+                    <?= my_mb_error($this->error_str, 'title') ?>
+                    <?= $this->form->getElement('title') ?>
+                </p>
+                <p class="form-group">
+                    <label for="email">Nama</label>
+                    <?= my_mb_error($this->error_str, 'fullname') ?>
+                    <?= $this->form->getElement('fullname') ?>
+                </p>
+                <p class="form-group">
+                    <label for="email">Nomor Telepon</label>
+                    <?= my_mb_error($this->error_str, 'phone') ?>
+                    <?= $this->form->getElement('phone') ?>
+                </p>
+                <p class="form-group">
+                    <label for="email">Email</label>
+                    <?= my_mb_error($this->error_str, 'email') ?>
+                    <?= $this->form->getElement('email') ?>
+                </p>
+            </div>
             <div class="col-xs-12 col-md-9">
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" id="message" name="message"></textarea>
+                    <label for="message">Isi Pesan</label>
+                    <?= my_mb_error($this->error_str, 'content') ?>
+                    <?= $this->form->getElement('content') ?>
                 </div>
             </div>
         </div>
         <div class="submit">
             <button type="submit" name="submitMessage" id="submitMessage" class="button btn btn-default button-medium">
                 <span>
-                    Send
+                    Kirim
                     <i class="icon-chevron-right right"></i>
                 </span>
             </button>
         </div>
     </fieldset>
 </form>
-
-
-
-      
                         </div><!-- #center_column -->
-                                        
-                           
-                    
                     </div><!-- .row -->
                 </div><!-- #columns -->
             </div><!-- columns-container -->    

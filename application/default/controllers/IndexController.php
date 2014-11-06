@@ -19,6 +19,10 @@ class IndexController extends BaseController {
         $models = $this->model('Logic_Product')->getPopularProduct();
         $this->view->popular = $models;
         
+        //brand
+        $models = $this->model('Logic_Brand')->getAll();
+        $this->view->brand = $models;
+        
         //berita terbaru
         $models = $this->model('Logic_News')->getLatestNews();
         $this->view->news = $models;

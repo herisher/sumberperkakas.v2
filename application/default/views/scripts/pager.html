@@ -8,15 +8,16 @@ function pager($page) {
 //-->
 </script>
                                     <!-- nbr product/page -->
-                                    <form name="form1" id="form1" method="post" action="/product/list" class="compare-form">
+                                    <form name="form1" id="form1" method="post" action="/product/<?= $this->action_name?>" class="compare-form">
                                         <div class="clearfix selector1">
                                             <label for="nb_item">
                                                 Tampilkan
                                             </label>
                                             <select name="item_count_per_page" onChange="pager(1);">
-                                            <option value="30"  <?php if ($this->pages->itemCountPerPage == 30)  { echo "selected=\"selected\""; } ?>>30</option>
-                                            <option value="60"  <?php if ($this->pages->itemCountPerPage == 60)  { echo "selected=\"selected\""; } ?>>60</option>
-                                            <option value="90"  <?php if ($this->pages->itemCountPerPage == 90)  { echo "selected=\"selected\""; } ?>>90</option>
+                                            <option value="20"  <?php if ($this->pages->itemCountPerPage == 20)  { echo "selected=\"selected\""; } ?>>20</option>
+                                            <option value="40"  <?php if ($this->pages->itemCountPerPage == 40)  { echo "selected=\"selected\""; } ?>>40</option>
+                                            <option value="80"  <?php if ($this->pages->itemCountPerPage == 80)  { echo "selected=\"selected\""; } ?>>80</option>
+                                            <option value="100"  <?php if ($this->pages->itemCountPerPage == 100)  { echo "selected=\"selected\""; } ?>>100</option>
                                             </select>
                                             <span>per halaman</span>
                                             <input type="hidden" name="page" value="">
@@ -29,11 +30,21 @@ function pager($page) {
                                         <ul class="pagination">
                                             <?php if (isset($this->pages->previous)) : ?>
                                             <li id="pagination_previous" class="pagination_previous">
-                                                <a href="/product/list<?=$this->render_url ?>?page=<?= $this->pages->previous ?>">
+                                                <a href="/product/<?= $this->action_name?><?=$this->render_url ?>?page=1">
+                                                     <i class="icon-chevron2-left"></i>
+                                                </a>
+                                            </li>
+                                            <li id="pagination_previous" class="pagination_previous">
+                                                <a href="/product/<?= $this->action_name?><?=$this->render_url ?>?page=<?= $this->pages->previous ?>">
                                                      <i class="icon-chevron-left"></i>
                                                 </a>
                                             </li>
                                             <?php else : ?> 
+                                            <li id="pagination_previous" class="disabled pagination_previous">
+                                                <span>
+                                                    <i class="icon-chevron2-left"></i>
+                                                </span>
+                                            </li>
                                             <li id="pagination_previous" class="disabled pagination_previous">
                                                 <span>
                                                     <i class="icon-chevron-left"></i>
@@ -44,13 +55,18 @@ function pager($page) {
                                              <?php if($page == $this->pages->current): ?>
                                             <li class="active current"><span><span><?= $page ?></span></span></li>
                                              <?php else: ?>
-                                            <li><a href="/product/list<?=$this->render_url ?>?page=<?= $page ?>"><span><?= $page ?></span></a></li>
+                                            <li><a href="/product/<?= $this->action_name?><?=$this->render_url ?>?page=<?= $page ?>"><span><?= $page ?></span></a></li>
                                              <?php endif; ?>
                                             <?php endforeach; ?>
                                             <?php if (isset($this->pages->next)) : ?>
                                             <li id="pagination_next" class="pagination_next">
-                                                <a href="/product/list<?=$this->render_url ?>?page=<?= $this->pages->next ?>">
+                                                <a href="/product/<?= $this->action_name?><?=$this->render_url ?>?page=<?= $this->pages->next ?>">
                                                     <i class="icon-chevron-right"></i>
+                                                </a>
+                                            </li>
+                                            <li id="pagination_next" class="pagination_next">
+                                                <a href="/product/<?= $this->action_name?><?=$this->render_url ?>?page=<?= $this->pages->pageCount ?>">
+                                                    <i class="icon-chevron2-right"></i>
                                                 </a>
                                             </li>
                                             <?php else : ?>
@@ -59,10 +75,15 @@ function pager($page) {
                                                     <i class="icon-chevron-right"></i>
                                                 </span>
                                             </li>
+                                            <li id="pagination_next" class="disabled pagination_next">
+                                                <span>
+                                                    <i class="icon-chevron2-right"></i>
+                                                </span>
+                                            </li>
                                             <?php endif; ?>
                                         </ul>
                                     </div>
                                     <div class="product-count">
-                                        Menampilkan <?= number_format($this->pages->firstItemNumber); ?> - <?= number_format($this->pages->lastItemNumber); ?> dari <?= number_format($this->pages->totalItemCount); ?> produk
+                                        <?= number_format($this->pages->firstItemNumber); ?> - <?= number_format($this->pages->lastItemNumber); ?> dari <?= number_format($this->pages->totalItemCount); ?> produk
                                     </div>
                                     <!-- /Pagination -->

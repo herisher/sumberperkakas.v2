@@ -11,7 +11,7 @@
 <div id="left_column" class="column col-xs-12 col-sm-3">
     <!-- Block categories module -->
     <div id="categories_block_left" class="block">
-        <h2 class="title_block">Boat Docks &amp; Accessories</h2>
+        <h2 class="title_block"><?= $this->title ?></h2>
         <div class="block_content" style="">
             <ul class="tree dhtml">
                 <?php foreach($categories as $category) : ?>
@@ -36,57 +36,32 @@
         </div>
     </div>
     <!-- /Block categories module -->
-    <!-- Block layered navigation module -->
+    <!-- Block layered navigation module-->
     <div id="layered_block_left" class="block">
-        <p class="title_block">Catalog</p>
+        <p class="title_block">Merek</p>
         <div class="block_content">
             <form action="#" id="layered_form">
                 <div>
                     <div class="layered_filter">
-                        <div class="layered_subtitle_heading">
-                            <span class="layered_subtitle">Brand</span>
-                        </div>
                             <ul id="ul_layered_manufacturer_0" class="col-lg-12 layered_filter_ul">
+                                <?php foreach( $this->brand_list as $brand ) : ?>
                                 <li class="nomargin hiddable col-lg-12">
-                                    <div class="checker" id="uniform-layered_manufacturer_2"><span><input type="checkbox" class="checkbox" name="layered_manufacturer_2" id="layered_manufacturer_2" value="2"></span></div>                                <label for="layered_manufacturer_2">
+                                    <label for="layered_manufacturer_2">
                                         <a href="list.html#manufacturer-fusce_a_viverra_nulla" rel="nofollow">
-                                            Fusce a viverra nulla<span> (1)</span>
+                                            <?= $brand['name'] ?><span> (<?= $brand['count_id'] ?>)</span>
                                         </a>
                                     </label>
                                 </li>
-                                <li class="nomargin hiddable col-lg-12">
-                                    <div class="checker" id="uniform-layered_manufacturer_3"><span><input type="checkbox" class="checkbox" name="layered_manufacturer_3" id="layered_manufacturer_3" value="3"></span></div> 
-                                    <label for="layered_manufacturer_3">
-                                        <a href="list.html#manufacturer-fusce_vitae_auctor_erat" rel="nofollow">
-                                            Fusce vitae auctor erat<span> (2)</span>
-                                        </a>
-                                    </label>
-                                </li>
-                                <li class="nomargin hiddable col-lg-12">
-                                    <div class="checker" id="uniform-layered_manufacturer_4">
-                                        <span><input type="checkbox" class="checkbox" name="layered_manufacturer_4" id="layered_manufacturer_4" value="4"></span>
-                                    </div> 
-                                    <label for="layered_manufacturer_4">
-                                        <a href="list.html#manufacturer-lorem_ipsum_dolor" rel="nofollow">
-                                            Lorem ipsum dolor<span> (1)</span>
-                                        </a>
-                                    </label>
-                                </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                 </div>
                 <input type="hidden" name="id_category_layered" value="31">
             </form>
         </div>
-        <div id="layered_ajax_loader" style="display: none;">
-            <p>
-                <img src="http://livedemo00.template-help.com/prestashop_49514/img/loader.gif" alt="">
-                <br>Loading...
-            </p>
-        </div>
     </div>
     <!-- /Block layered navigation module -->
-    <!-- Block manufacturers module -->
+    <!-- Block manufacturers module>
     <div id="manufacturers_block_left" class="block blockmanufacturer">
         <p class="title_block">
                         <a href="/product/list" title="Manufacturers">
@@ -124,7 +99,7 @@
                                         </div>
     </div>
     <!-- /Block manufacturers module -->
-    <!-- MODULE Block best sellers -->
+    <!-- MODULE Block best sellers>
     <div id="best-sellers_block_right" class="block products_block">
         <h4 class="title_block">
             <a href="/product/list" title="View a top sellers products">Top sellers</a>
@@ -191,7 +166,7 @@
             </div>
     </div>
     <!-- /MODULE Block best sellers -->
-    <!-- MODULE Block new products -->
+    <!-- MODULE Block new products>
     <div id="new-products_block_right" class="block products_block">
         <h4 class="title_block">
             <a href="/product/list" title="New products">New products</a>
@@ -248,7 +223,7 @@
                 </div>
                 </div>
     </div>
-    <!-- /MODULE Block new products -->        
+    <!-- /MODULE Block new products>        
     <div id="htmlcontent_left">
         <ul class="htmlcontent-home clearfix row">
             <li class="htmlcontent-item-1">
@@ -258,7 +233,7 @@
                                             </li>
         </ul>
     </div>
-    <!-- MODULE Block specials -->
+    <!-- MODULE Block specials>
     <div id="special_block_right" class="block">
         <p class="title_block">
             <a href="/product/list" title="Specials">
@@ -303,7 +278,7 @@
             </div>
     </div>
     <!-- /MODULE Block specials -->
-    <!-- Block Viewed products -->
+    <!-- Block Viewed products>
     <div id="viewed-products_block_left" class="block">
         <p class="title_block">Viewed products</p>
         <div class="block_content products-block" style="">
@@ -336,5 +311,5 @@
                     </li>
                         </ul>
         </div>
-    </div>
+    </div-->
 </div>

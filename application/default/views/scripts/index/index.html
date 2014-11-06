@@ -95,9 +95,12 @@
                                 <!-- Products list -->
                                 <ul id="blocknewproducts" class="product_list grid row blocknewproducts tab-pane active">
                                     <?php 
-                                        $i = 1;
-                                        foreach($this->promos as $item) : ?>
-                                    <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3">
+                                        $i = 0;
+                                        foreach($this->promos as $item) : 
+                                            if( $i%4 == 0 ) $first = "first-in-line";
+                                            else $first = "";
+                                    ?>
+                                    <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3 <?=$first?>">
                                         <div class="product-container">
                                             <div class="left-block">
                                                 <div class="product-image-container">
@@ -116,18 +119,26 @@
                                                     </a>
                                                 </h5>
                                                 <div class="content_price">
+                                                    <?php if( $item['call_us'] ) : ?>
+                                                    <span class="price product-call">Harga Hubungi Kami<br>0251-8362849</span>
+                                                    <?php else : 
+                                                            if( $item['price'] != $item['current_price'] ) :
+                                                    ?>
                                                     <meta itemprop="priceCurrency" content="1">
                                                         <span class="old-price product-price">IDR <?= number_format($item['price']) ?></span>
-                                                        <span class="price-percent-reduction">-5%</span>
+                                                        <span class="price-percent-reduction">-<?= intval(($item['price']-$item['current_price'])/$item['price']*100) ?>%</span>
                                                     <br>
                                                     <span itemprop="price" class="price product-price">IDR <?= number_format($item['current_price']) ?></span>
+                                                        <?php else : ?>
+                                                    <span itemprop="price" class="price product-price">IDR <?= number_format($item['price']) ?></span>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div><!-- .product-container> -->
                                     </li>
-                                    <?php endforeach; ?>
+                                    <?php $i++; endforeach; ?>
                                 </ul>
-                                
                             </div>
                             <ul id="home-page-tabs" class="nav nav-tabs clearfix">
                                 <li class="active">
@@ -138,9 +149,12 @@
                                 <!-- Products list -->
                                 <ul id="homefeatured" class="product_list grid row homefeatured tab-pane active">
                                     <?php 
-                                        $i = 1;
-                                        foreach($this->popular as $item) : ?>
-                                    <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3">
+                                        $i = 0;
+                                        foreach($this->popular as $item) : 
+                                            if( $i%4 == 0 ) $first = "first-in-line";
+                                            else $first = "";
+                                    ?>
+                                    <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3 <?=$first?>">
                                         <div class="product-container">
                                             <div class="left-block">
                                                 <div class="product-image-container">
@@ -156,12 +170,25 @@
                                                     </a>
                                                 </h5>
                                                 <div class="content_price">
+                                                    <?php if( $item['call_us'] ) : ?>
                                                     <span class="price product-call">Harga Hubungi Kami<br>0251-8362849</span>
+                                                    <?php else : 
+                                                            if( $item['price'] != $item['current_price'] ) :
+                                                    ?>
+                                                    <meta itemprop="priceCurrency" content="1">
+                                                        <span class="old-price product-price">IDR <?= number_format($item['price']) ?></span>
+                                                        <span class="price-percent-reduction">-<?= intval(($item['price']-$item['current_price'])/$item['price']*100) ?>%</span>
+                                                    <br>
+                                                    <span itemprop="price" class="price product-price">IDR <?= number_format($item['current_price']) ?></span>
+                                                        <?php else : ?>
+                                                    <span itemprop="price" class="price product-price">IDR <?= number_format($item['price']) ?></span>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div><!-- .product-container> -->
                                     </li>
-                                    <?php endforeach; ?>
+                                    <?php $i++; endforeach; ?>
                                 </ul>
                             </div>
             </div><!-- #center_column -->
@@ -181,16 +208,11 @@
                         <div id="brand-slider">
                             <div id="brandslider" style="float: left; padding-left: 20px;">
                                 <ul>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/bosch_logo.jpg" title="bosch" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/firman_logo.jpg" title="firman" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/karcher_logo.jpg" title="karcher" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/multipro_logo.jpg" title="multipro" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/skil_logo.jpg" title="skil" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/union_logo.jpg" title="union" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/wim_logo.jpg" title="wim" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/fujiyama_logo.jpg" title="fujiyama" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/tanaka_logo.jpg" title="tanaka" /></a></li>
-                                    <li style="width: 200px; height: 100px;"><a href="/product/list"><img src="/img/brand/tasco_logo.jpg" title="tasco" /></a></li>
+                                    <?php foreach($this->brand as $brand) : 
+                                            if($brand['image_url']) :
+                                    ?>
+                                    <li style="width: 200px; height: 100px;"><a href="/product/list/bid/<?= $brand['id'] ?>"><img src="<?= $brand['image_url'] ?>" title="<?= $brand['name'] ?>" /></a></li>
+                                    <?php endif; endforeach; ?>
                                 </ul>
                             </div>
                         </div>

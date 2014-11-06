@@ -128,41 +128,47 @@
                             </div>
                             <!-- Products list -->
                             <ul class="product_list grid row">
-                                <?php foreach($this->models as $item) : ?>
-                                <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3">
-                                    <div class="product-container" itemscope="" itemtype="http://schema.org/Product">
+                                <?php 
+                                    $i = 0;
+                                    foreach($this->models as $item) : 
+                                        if( $i%4 == 0 ) $first = "first-in-line";
+                                        else $first = "";
+                                ?>
+                                <li class="ajax_block_product col-xs-12 col-sm-6 col-md-3 <?= $first ?>">
+                                    <div class="product-container">
                                         <div class="left-block">
                                             <div class="product-image-container">
-                                                <a class="product_img_link" href="/product/detail/id/<?= $item['id'] ?>" title="<?= $item['name'] ?>" itemprop="url">
-                                                    <img class="replace-2x img-responsive" src="<?= $item['image_url1'] ?>" alt="<?= $item['name'] ?>" title="Cam Type Sash Lock" itemprop="image">
+                                                <a class="product_img_link" href="/product/detail/id/<?= $item['id'] ?>" title="<?= $item['name'] ?>">
+                                                    <img class="replace-2x img-responsive" src="<?= $item['image_url1'] ?>" alt="<?= $item['name'] ?>" title="<?= $item['name'] ?>">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="right-block">
-                                            <h5 itemprop="name">
-                                                <a class="product-name" href="/product/detail/id/<?= $item['id'] ?>" title="<?= $item['name'] ?>" itemprop="url">
+                                            <h5>
+                                                <a class="product-name" href="/product/detail/id/<?= $item['id'] ?>" title="<?= $item['name'] ?>">
                                                     <span class="grid-name"><?= $item['name'] ?></span>
                                                 </a>
                                             </h5>
-                                            <br>
-                                            <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer" class="content_price">
+                                            <div class="content_price">
+                                                <?php if( $item['call_us'] ) : ?>
+                                                <span class="price product-call">Harga Hubungi Kami<br>0251-8362849</span>
+                                                <?php else : 
+                                                        if( $item['price'] != $item['current_price'] ) :
+                                                ?>
                                                 <meta itemprop="priceCurrency" content="1">
                                                     <span class="old-price product-price">IDR <?= number_format($item['price']) ?></span>
-                                                    <span class="price-percent-reduction">-5%</span>
+                                                    <span class="price-percent-reduction">-<?= intval(($item['price']-$item['current_price'])/$item['price']*100) ?>%</span>
                                                 <br>
                                                 <span itemprop="price" class="price product-price">IDR <?= number_format($item['current_price']) ?></span>
+                                                    <?php else : ?>
+                                                <span itemprop="price" class="price product-price">IDR <?= number_format($item['price']) ?></span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
                                             </div>
-                                            <div class="button-container">
-                                                <a style="visibility: hidden;" class="button ajax_add_to_cart_button btn btn-default" href="/product/detail/id/xx" rel="nofollow" title="Add to cart" data-id-product="16">
-                                                    <span>Add to cart</span>
-                                                </a>
-                                            </div>
-                                            <div class="color-list-container"> </div>
-                                                <div class="product-flags"></div>
                                         </div>
                                     </div><!-- .product-container> -->
                                 </li>
-                                <?php endforeach; ?>
+                                <?php $i++; endforeach; ?>
                             </ul>
 
                             <div class="content_sortPagiBar">
@@ -173,87 +179,9 @@
                         </div><!-- #center_column -->
                     </div><!-- .row -->
                 </div><!-- #columns -->
-<div id="layer_cart">
-    <div class="clearfix">
-        <div class="layer_cart_product col-xs-12 col-md-6">
-            <span class="cross" title="Close window"></span>
-            <h2>
-                <i class="icon-ok"></i>
-                Product successfully added to your shopping cart
-            </h2>
-            <div class="product-image-container layer_cart_img">
-            </div>
-            <div class="layer_cart_product_info">
-                <span id="layer_cart_product_title" class="product-name"></span>
-                <span id="layer_cart_product_attributes"></span>
-                <div>
-                    <strong class="dark">Quantity</strong>
-                    <span id="layer_cart_product_quantity"></span>
-                </div>
-                <div>
-                    <strong class="dark">Total</strong>
-                    <span id="layer_cart_product_price"></span>
-                </div>
-            </div>
-        </div>
-        <div class="layer_cart_cart col-xs-12 col-md-6">
-            <h2>
-                <!-- Plural Case [both cases are needed because page may be updated in Javascript] -->
-                <span class="ajax_cart_product_txt_s  unvisible">
-                    There are <span class="ajax_cart_quantity">0</span> items in your cart.
-                </span>
-                <!-- Singular Case [both cases are needed because page may be updated in Javascript] -->
-                <span class="ajax_cart_product_txt ">
-                    There is 1 item in your cart.
-                </span>
-            </h2>
-
-            <div class="layer_cart_row">
-                <strong class="dark">
-                    Total products
-                                                (tax excl.)
-                                        </strong>
-                <span class="ajax_block_products_total">
-                                        </span>
-            </div>
-
-                            <div class="layer_cart_row">
-                <strong class="dark">
-                    Total shipping&nbsp;(tax excl.)
-                </strong>
-                <span class="ajax_cart_shipping_cost">
-                                                Free shipping!
-                                        </span>
-            </div>
-                            <div class="layer_cart_row">    
-                <strong class="dark">
-                    Total
-                                                (tax excl.)
-                                        </strong>
-                <span class="ajax_block_cart_total">
-                                        </span>
-            </div>
-            <div class="button-container">    
-                <span class="continue btn btn-default button exclusive-medium" title="Continue shopping">
-                    <span>
-                        <i class="icon-chevron-left left"></i>
-                        Continue shopping
-                    </span>
-                </span>
-                <a class="btn btn-default button button-medium" href="/product/list" title="Proceed to checkout" rel="nofollow">
-                    <span>
-                        Proceed to checkout
-                        <i class="icon-chevron-right right"></i>
-                    </span>
-                </a>    
-            </div>
-        </div>
-    </div>
-    <div class="crossseling"></div>
-</div></div><!-- columns-container -->    
-                
-            </div><!-- .columns-container-bg1 -->           
-
+            </div><!-- columns-container -->
+        </div><!-- .columns-container-bg1 -->
+            
         <?= $this->render("footer.html"); ?>
     </div><!-- #page -->
 <script type="text/javascript">

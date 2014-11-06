@@ -4379,8 +4379,14 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 .icon-chevron-left:before {
   content: "\f053"; }
 
+.icon-chevron2-left:before {
+  content: "\f053\f053"; }
+
 .icon-chevron-right:before {
   content: "\f054"; }
+
+.icon-chevron2-right:before {
+  content: "\f054\f054"; }
 
 .icon-plus-sign:before {
   content: "\f055"; }
@@ -6277,6 +6283,16 @@ table.table_block td {
   margin-bottom: 12px;
   border-bottom: 1px solid #c1c1c1; }
 
+.page-subheading2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  color: #555454;
+  font-size: 16px;
+  padding: 0 0 15px;
+  line-height: normal;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #c1c1c1; }
+
 h3.page-product-heading {
   color: #555454;
   text-transform: uppercase;
@@ -6390,7 +6406,7 @@ ul.footer_links {
   .bottom-pagination-content div.pagination {
     margin: 0;
     float: right;
-    width: 450px;
+    width: 500px;
     text-align: center; }
     @media (min-width: 992px) and (max-width: 1199px) {
       .top-pagination-content div.pagination,

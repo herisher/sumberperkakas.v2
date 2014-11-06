@@ -36,7 +36,8 @@ class BaseController extends Zend_Controller_Action {
         // session to store the current page number
         $module_name = $this->getRequest()->getModuleName();
         $class_name  = $this->getRequest()->getControllerName();
-        $list_path   = '/' . $module_name . '/' . $class_name . '/list';
+        $action_name  = $this->getRequest()->getActionName();
+        $list_path   = '/' . $module_name . '/' . $class_name . '/' . $action_name;
         $session     = new Zend_Session_Namespace($list_path);
         
         $paginator = null;
@@ -187,8 +188,10 @@ class BaseController extends Zend_Controller_Action {
     public function createLastPage() {
         $module_name = $this->getRequest()->getModuleName();
         $class_name  = $this->getRequest()->getControllerName();
+        $action_name  = $this->getRequest()->getActionName();
         $this->view->module_name = $module_name;
         $this->view->class_name  = $class_name;
+        $this->view->action_name  = $action_name;
     }
 
     /**

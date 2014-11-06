@@ -4,7 +4,7 @@
  */
 class ContactController extends BaseController {
     const NS_CHANGE = "/contact";
-	
+    
     /**
      * form validation
      */
@@ -36,21 +36,22 @@ class ContactController extends BaseController {
             }
         }
     }
-	
+    
     public function doCreate($form) {
         // insert
         $model_id = $this->model('Dao_Contact')->insert(array(
             'fullname'          => $form->getValue('fullname'),
             'email'             => $form->getValue('email'),
             'phone'             => $form->getValue('phone'),
+            'title'             => $form->getValue('title'),
             'content'           => $form->getValue('content'),
             'create_date'       => new Zend_Db_Expr('now()'),
             'update_date'       => new Zend_Db_Expr('now()'),
         ));
         $session = new Zend_Session_Namespace(self::NS_CHANGE);
-		$session->id = $model_id;
-	}
-	
+        $session->id = $model_id;
+    }
+    
     /**
      * complete
      */
@@ -63,7 +64,7 @@ class ContactController extends BaseController {
             return;
         }
 
-		/*
+        /*
         // 問い合わせ者にメール送信
         $this->model('Dao_Mailtemplate')->doSend(10, $session->email, array(
             '%USERNAME%'    => $session->name1.' '.$session->name2,
@@ -77,7 +78,7 @@ class ContactController extends BaseController {
         ));
 
         // 管理者にメール送信
-		$send_to = 'info@titian.jp';
+        $send_to = 'info@titian.jp';
         $this->model('Dao_Mailtemplate')->doSend(11, $send_to, array(
             '%USERNAME%'    => $session->name1.' '.$session->name2,
             '%NAME1%'       => $session->name1,
