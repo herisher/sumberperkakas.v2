@@ -130,13 +130,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="first">password</td>
-                            <td width="80%" class="color_gray"> 
-                                <?= my_mb_error($this->error_str, 'password') ?>
-                                <?= $this->form->getElement('password') ?>
-                            </td>
-                        </tr>
-                        <tr>
                             <td class="first">Periode Promo</td>
                             <td width="80%" class="color_gray"> 
                                 <?= my_mb_error($this->error_str, 'promo_period') ?>
@@ -188,29 +181,29 @@
                         <tr>
                             <td class="first">Gambar</td>
                             <td width="80%" class="color_gray"> 
-							<?php if( $this->error_str['image_url'] ) : ?><br>
-							<?= my_mb_error($this->error_str, 'image_url') ?>
-							<?php endif; ?>
-							<div class="contents_space2">
-							<table width="100%" border="0" cellpadding="5">
-							<tr>
-								<td class="color_gray">
-								<div class="item_img">
-									<?= $this->form->getElement('image_url1') ?>
-									<!--input name="image_url1" type="file" size="20" /-->
-									<br/><span class="red">※</span> Harus diisi.<br/>Jika hanya ada satu gambar,<br/>Silakan gunakan field ini.
-								</div>
-								<div class="item_img">
-									<?= $this->form->getElement('image_url2') ?>
-									<!--input name="image_url2" type="file" size="20" /-->
-								</div>
-								<div class="item_img">
-									<?= $this->form->getElement('image_url3') ?>
-									<!--input name="image_url3" type="file" size="20" /-->
-								</div>
-							</tr>
-							</table>
-							</div>
+                            <?php if( $this->error_str['image_url'] ) : ?><br>
+                            <?= my_mb_error($this->error_str, 'image_url') ?>
+                            <?php endif; ?>
+                            <div class="contents_space2">
+                            <table width="100%" border="0" cellpadding="5">
+                            <tr>
+                                <td class="color_gray">
+                                <div class="item_img">
+                                    <?= $this->form->getElement('image_url1') ?>
+                                    <!--input name="image_url1" type="file" size="20" /-->
+                                    <br/><span class="red">※</span> Harus diisi.<br/>Jika hanya ada satu gambar,<br/>Silakan gunakan field ini.
+                                </div>
+                                <div class="item_img">
+                                    <?= $this->form->getElement('image_url2') ?>
+                                    <!--input name="image_url2" type="file" size="20" /-->
+                                </div>
+                                <div class="item_img">
+                                    <?= $this->form->getElement('image_url3') ?>
+                                    <!--input name="image_url3" type="file" size="20" /-->
+                                </div>
+                            </tr>
+                            </table>
+                            </div>
                             </td>
                         </tr>
                         <tr>

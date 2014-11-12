@@ -183,9 +183,6 @@ class ProductController extends BaseController {
         
         $this->createNavigator($select, $limit);
         
-        
-        echo $select->__toString();
-        
         // Display customization
         $models = array();
         foreach($this->view->paginator as $model) {

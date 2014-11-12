@@ -394,6 +394,7 @@ class Manager_ProductController extends BaseController {
         $form->getElement('status')->setMultiOptions(array('' => '▼Pilih') + Dao_Product::$statics['status']);
         $form->getElement('disp_flag')->setMultiOptions(Dao_Product::$statics['disp_flag']);
         $form->getElement('disp_flag')->setSeparator(' ');
+        $form->getElement('call_us')->setUncheckedValue();
 
         if ( $id && preg_match("/^\d+$/", $id) ) {
             $model = $this->model('Dao_Product')->retrieve($id);
@@ -401,7 +402,6 @@ class Manager_ProductController extends BaseController {
             // Initial value setting
             $models = $model->toArray();
             $form->setDefaults($models);
-            $form->getElement('call_us')->setCheckedValue();
             $this->view->model = $models;
 
             // Error checking
@@ -504,19 +504,19 @@ class Manager_ProductController extends BaseController {
         
         $model_id = $table->update(
             array(
-                'item_number'              => $form->getValue('item_number'),
-                'name'                     => $form->getValue('name'),
-                'call_us'                  => $form->getValue('call_us'),
-                'price'                    => $form->getValue('price'),
-                'promo_price'            => $form->getValue('promo_price'),
+                'item_number'           => $form->getValue('item_number'),
+                'name'                  => $form->getValue('name'),
+                'call_us'               => $form->getValue('call_us'),
+                'price'                 => $form->getValue('price'),
+                'promo_price'           => $form->getValue('promo_price'),
                 'promo_period_start'    => $form->getValue('promo_period_start'),
-                'promo_period_end'        => $form->getValue('promo_period_end'),
-                'brand_id'                => $form->getValue('brand_id'),
-                'type'                    => $form->getValue('type'),
-                'category_id'            => $form->getValue('category_id'),
-                'sub_category_id'        => $form->getValue('sub_category_id'),
-                'sub_category1_id'        => $form->getValue('sub_category1_id'),
-                'sub_category2_id'        => $form->getValue('sub_category2_id'),
+                'promo_period_end'      => $form->getValue('promo_period_end'),
+                'brand_id'              => $form->getValue('brand_id'),
+                'type'                  => $form->getValue('type'),
+                'category_id'           => $form->getValue('category_id'),
+                'sub_category_id'       => $form->getValue('sub_category_id'),
+                'sub_category1_id'      => $form->getValue('sub_category1_id'),
+                'sub_category2_id'      => $form->getValue('sub_category2_id'),
                 'image_url1'            => $image_url1,
                 'image_url2'            => $image_url2,
                 'image_url3'            => $image_url3,

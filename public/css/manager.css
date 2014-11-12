@@ -149,6 +149,7 @@ table#top tr td.first{background:#feeded}
 #menu ul li.first:hover a, #menu_top ul li.first:hover a{border-radius:5px 0 0 5px}
 #menu ul li.last, #menu_top ul li.last{border-right:none;}
 #menu ul li.last:hover a, #menu_top ul li.last:hover a{border-radius:0 5px 5px 0}
+.table_container table tr.even, table.table-right tr.even{background:#f8f7f3}
 .table_container table tr td.even, table.table-right tr td.even{background:#f8f7f3}
 /*#side_menu ul li a{
 	display:inline-block;

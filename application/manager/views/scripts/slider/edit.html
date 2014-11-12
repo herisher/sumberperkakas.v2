@@ -1,21 +1,45 @@
-<?= $this->render('sidemenu/product.html') ?>
+<?= $this->render('sidemenu/service.html') ?>
 
 <!--content-->
 <div id="contents">
   <div id="contents_in">
 
     <div id="contents_title">
-		Edit Sub Kategori 
+        Edit Gambar Berjalan
     </div>
     <div class="contents_space">
-    	<div class="table_container">
-                <form method="post" action="/manager/sub-category1/edit/id/<?= $this->model['id'] ?>">
-                    <table id="top" enctype="multipart/form-data">
+        <div class="table_container">
+                <form method="post" action="/manager/slider/edit/id/<?= $this->model['id'] ?>" enctype="multipart/form-data">
+                    <table id="top">
                         <tr>
-                            <td class="first">Nama</td>
+                            <td class="first">Gambar Slider</td>
                             <td width="80%" class="color_gray"> 
-                                <?= my_mb_error($this->error_str, 'name') ?>
-                                <?= $this->form->getElement('name') ?>
+                                <?php if( $this->error_str['image_url'] ) : ?><br>
+                                <?= my_mb_error($this->error_str, 'image_url') ?>
+                                <?php endif; ?>
+                                <img src="<?= $this->model['image_url'] ?>"/>
+                                <br>
+                                <input name="image_url" type="file" />
+                                <br/><span class="red">※</span> .jpg|.png|.gif (Ukuran 870x315px)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Gambar Slider Detail</td>
+                            <td width="80%" class="color_gray">
+                                <?php if( $this->error_str['detail_image_url'] ) : ?><br>
+                                <?= my_mb_error($this->error_str, 'detail_image_url') ?>
+                                <?php endif; ?>
+                                <img src="<?= $this->model['detail_image_url'] ?>"/>
+                                <br>
+                                <input name="detail_image_url" type="file" />
+                                <br/><span class="red">※</span> .jpg|.png|.gif (Ukuran bebas)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Urutan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_order') ?>
+                                <?= $this->form->getElement('disp_order') ?></div>
                             </td>
                         </tr>
                         <tr>

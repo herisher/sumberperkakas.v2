@@ -14,9 +14,7 @@
                         <tr>
                             <td class="first">Gambar Slider</td>
                             <td width="80%" class="color_gray"> 
-                                <?php if( $this->error_str['image_url'] ) : ?><br>
                                 <?= my_mb_error($this->error_str, 'image_url') ?>
-                                <?php endif; ?>
                                 <input name="image_url" type="file" />
                                 <br/><span class="red">※</span> .jpg|.png|.gif (Ukuran 870x315px)
                             </td>
@@ -29,6 +27,13 @@
                                 <?php endif; ?>
                                 <input name="detail_image_url" type="file" />
                                 <br/><span class="red">※</span> .jpg|.png|.gif (Ukuran bebas)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first">Urutan</td>
+                            <td width="80%" class="color_gray"> <div align="left">
+                                <?= my_mb_error($this->error_str, 'disp_order') ?>
+                                <?= $this->form->getElement('disp_order') ?></div>
                             </td>
                         </tr>
                         <tr>

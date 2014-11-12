@@ -152,6 +152,25 @@ class Logic_Images extends Logic_Base {
         return $image;
     }
     
+    public function doUploadStd($key, $folder = "temp") {
+        $target_dir = APPLICATION_PATH . "\\upload\\" . $folder . "\\";
+        $target_file = $target_dir . basename($_FILES[$key]["name"]);
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        
+        $uniqid = uniqid('',true);
+        $image_name = $uniqid . '.' . $imageFileType;
+        $image_path = $target_dir . $image_name;
+        $thumb_path = $target_dir . "thumb\\" . $image_name;
+        $image_url =  '/upload/' . $folder . "/" . $image_name;
+        $thumb_url =  '/upload/' . $folder . "/thumb/" . $image_name;
+        
+        if (move_uploaded_file($_FILES[$key]["tmp_name"], $image_path) ) {
+            return $image_url;
+        } else {
+            return;
+        }
+    }
+    
     public function getImageSlider() {
         return $this->db()->fetchAll("SELECT * FROM `dtb_image_slider` WHERE `disp_flag` = 1 ORDER BY `disp_order`");
     }
